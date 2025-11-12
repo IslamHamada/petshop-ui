@@ -2,11 +2,22 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import {provideAuth0} from '@auth0/auth0-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
+    provideRouter(routes),
+    provideAuth0({
+      domain: 'dev-atfpp36qj24tzo8l.us.auth0.com',
+      clientId: 'UxGoFyQJ1IPiuc2RkPtb4v84jpe3x2jg',
+      authorizationParams: {
+        redirect_uri: 'http://localhost:8090',
+        audience: 'http://random/api'
+      },
+      cacheLocation: 'localstorage',
+      useRefreshTokens: true,
+    })
   ]
 };
