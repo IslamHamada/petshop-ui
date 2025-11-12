@@ -1,0 +1,23 @@
+<main>
+    <header>
+      <a [routerLink]="['/']">
+        <div>PetShop</div>
+      </a>
+      @if (!loggedIn) {
+        <button (click)="auth.loginWithRedirect()">login</button>
+      } @else {
+        <a [routerLink]="['/profile']">
+          <div>{{user?.username}}</div>
+        </a>
+        <a [routerLink]="['/cart']">
+          <div>Cart ({{cartItems}})</div>
+        </a>
+        <button (click)="auth.logout()">logout</button>
+      }
+
+    </header>
+
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+</main>
