@@ -13,7 +13,7 @@ export class UserRestAPI {
       username: user.username,
       email: user.email,
     }).subscribe(id => {
-      user.num_id = id;
+      user.backend_id = id;
     });
   }
 }

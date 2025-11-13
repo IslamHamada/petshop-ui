@@ -16,7 +16,7 @@ export class CartRestAPI {
         product_id: product_id,
         count: count
       });
-      this.http.get<[]>("http://localhost:9090/cart", {params: {user_id : this.userService.user?.id ?? ''}}).subscribe(
+      this.http.get<[]>("http://localhost:9090/cart", {params: {user_id : this.userService.user?.backend_id ?? ''}}).subscribe(
         data => {
           this.userService.cartItems = data.length
         }
