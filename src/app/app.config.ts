@@ -20,6 +20,9 @@ export const appConfig: ApplicationConfig = {
       },
       cacheLocation: 'localstorage',
       useRefreshTokens: true,
+      httpInterceptor: {
+        allowedList: ['http://localhost:9090/*'], // 👈 REQUIRED
+      },
     })
   ]
 };
