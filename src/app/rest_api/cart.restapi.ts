@@ -12,7 +12,7 @@ export class CartRestAPI {
   addCartItem(product_id: number, count: number) {
     if(this.userService.loggedIn){
       this.http.post("http://localhost:9090/cart",{
-        user_id: this.userService.user?.id,
+        user_id: this.userService.user?.auth0_id,
         product_id: product_id,
         count: count
       });

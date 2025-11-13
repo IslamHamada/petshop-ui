@@ -1,5 +1,5 @@
 export interface User {
-  id: string;
+  auth0_id: string;
   username: string;
   email: string;
   token: string;
