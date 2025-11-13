@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'profile',
   templateUrl: 'profile.html'
 })
 export class Profile{}
