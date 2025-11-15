@@ -4,7 +4,7 @@
         <div>PetShop</div>
       </a>
       @if (!userService.loggedIn) {
-        <button (click)="userService.auth.loginWithRedirect()">login</button>
+        <button (click)="userService.authObject.loginWithRedirect()">login</button>
       } @else {
         <a [routerLink]="['/profile']">
           <div>{{userService.user?.username}}</div>
@@ -12,7 +12,7 @@
         <a [routerLink]="['/cart']">
           <div>Cart ({{userService.cartItems}})</div>
         </a>
-        <button (click)="userService.auth.logout()">logout</button>
+        <button (click)="userService.authObject.logout()">logout</button>
       }
 
     </header>
