@@ -7,7 +7,7 @@
         <button (click)="userService.authObject.loginWithRedirect()">login</button>
       } @else {
         <a [routerLink]="['/profile']">
-          <div>{{userService.user?.username}}</div>
+          <div>{{userService.user.username}}</div>
         </a>
         <a [routerLink]="['/cart']">
           <div>Cart ({{userService.cartItems}})</div>
