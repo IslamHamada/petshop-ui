@@ -21,7 +21,16 @@ export const appConfig: ApplicationConfig = {
       cacheLocation: 'localstorage',
       useRefreshTokens: true,
       httpInterceptor: {
-        allowedList: ['http://localhost:9090/*'], // 👈 REQUIRED
+        allowedList: [
+          'http://localhost:9090/cart',
+          'http://localhost:9090/cart/*',
+
+          'http://localhost:9090/order',
+          'http://localhost:9090/order/*',
+
+          'http://localhost:9090/user',
+          'http://localhost:9090/user/*',
+          ]
       },
     })
   ]
