@@ -12,7 +12,13 @@ export class UserService {
   backendId$ = this.backendIdSubject.asObservable();
   loggedIn = false;
   cartItems = 0;
-  user : User | undefined;
+  user : User = {
+    auth0_id: '',
+    backend_id: -1,
+    username: '',
+    email: '',
+    token: ''
+  };
   userRestAPI = inject(UserRestAPI)
 
   constructor(public auth: AuthService) {
