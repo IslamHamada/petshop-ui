@@ -1,1 +1,6 @@
 Cart template
+<section>
+  @for(cartItem of (cart$ | async); track $index) {
+    <div>{{cartItem.id}}, {{cartItem.count}}, {{cartItem.productId}}, {{cartItem.userId}}</div>
+  }
+</section>
