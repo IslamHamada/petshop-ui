@@ -8,6 +8,8 @@ import {UserRestAPI} from './rest_api/user.restapi';
   providedIn: 'root'
 })
 export class UserService {
+  private backendIdSubject = new BehaviorSubject<number | null>(null)
+  backendId$ = this.backendIdSubject.asObservable();
   loggedIn = false;
   cartItems = 0;
   user : User | undefined;
