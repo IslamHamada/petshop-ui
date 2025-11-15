@@ -21,26 +21,35 @@ export class UserService {
   };
   userRestAPI = inject(UserRestAPI)
 
-  constructor(public auth: AuthService) {
-    auth.isAuthenticated$.subscribe(auth => {
-      this.loggedIn = auth;
-      if(auth) {
+  constructor(public authObject: AuthService) {
+    authObject.isAuthenticated$.pipe(
+      distinctUntilChanged(),
+      tap(auth => {
+        this.loggedIn = auth
+        if(!auth){
+          this.cartItems = 0;
+          this.backendIdSubject.next(null);
+        }
+      }),
+      filter(auth => auth),
+      switchMap(() =>
         combineLatest([
-          this.auth.user$,
-          this.auth.getAccessTokenSilently()
-        ]).subscribe(([user, token]) => {
-          console.log('Token:', token);
-          this.user = {
-            auth0_id: user?.sub ?? '',
-            username: user?.['username'] ?? user?.name ?? '',
-            email: user?.email ?? '',
-            token: token ?? '',
-            backend_id: 0
-          };
-          this.userRestAPI.addUserAndGetNumId(this.user)
-        });
-      }
-    })
+          authObject.user$,
+          authObject.getAccessTokenSilently()
+        ])
+      ),
+      switchMap(([user, token]) => {
+        this.user.auth0_id = user?.sub ?? '';
+        this.user.username = user?.['username'] ?? user?.name ?? '';
+        this.user.email = user?.email ?? '';
+        this.user.token = token ?? '';
+        return this.userRestAPI.addUserToBackendAndGetId(this.user);
+      })
+    ).subscribe(backendId => {
+      this.backendIdSubject.next(backendId);
+      this.user.backend_id = backendId;
+    });
+  }
 
   rxOnBackendId$<T>(f: (id: number) => Observable<T>): Observable<T> {
     return this.backendId$.pipe(
