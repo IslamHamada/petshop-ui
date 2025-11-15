@@ -35,5 +35,11 @@ export class UserService {
         });
       }
     })
+
+  rxOnBackendId$<T>(f: (id: number) => Observable<T>): Observable<T> {
+    return this.backendId$.pipe(
+      filter(id => id !== null),
+      switchMap(id => f(id))
+    );
   }
 }
