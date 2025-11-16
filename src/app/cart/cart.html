@@ -1,7 +1,12 @@
 Cart template
 <section>
   @for(cartItem of cart; track $index) {
-    <div>{{cartItem.id}}, {{cartItem.count}}, {{cartItem.productId}}, {{cartItem.userId}}</div>
+    <div>{{cartItem.id}}, {{cartItem.count}}, {{cartItem.productId}}, {{cartItem.userId}}
+
+      <button (click)="decreaseClick($index)"
+              [disabled]="cartItem.count === 1">-</button>
+
+    </div>
   }
   <button (click)="orderClick()">Order</button>
 </section>

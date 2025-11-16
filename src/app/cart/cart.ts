@@ -23,4 +23,10 @@ export class Cart {
   orderClick(){
     this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id)).subscribe();
   }
+
+  decreaseClick(cart_item_idx : number) {
+    let cartItem : CartItem = this.cart[cart_item_idx];
+    cartItem.count--;
+    this.cartRestAPI.updateCartItemCount(cartItem.id, cartItem.count).subscribe()
+  }
 }
