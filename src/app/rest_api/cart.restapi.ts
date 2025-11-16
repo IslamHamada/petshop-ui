@@ -20,5 +20,9 @@ export class CartRestAPI {
     return this.http.get<CartItem[]>(`http://localhost:9090/cart/${user_id}`);
   }
 
+  updateCartItemCount(cart_item_id : number, count : number) {
+    return this.http.put(`http://localhost:9090/cart/${cart_item_id}`,{count: count});
+  }
+
   }
 }
