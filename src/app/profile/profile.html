@@ -1,1 +1,14 @@
 Profile template
+
+Order History
+<section>
+  @for (order of orderHistory$ | async; track order.time) {
+    <hr>
+    <div>
+      {{order.time}}
+      @for (orderItem of order.elaborateOrderItems; track $index){
+        <div>{{orderItem.product_name}} {{orderItem.price}} {{orderItem.count}}</div>
+      }
+    </div>
+  }
+</section>
