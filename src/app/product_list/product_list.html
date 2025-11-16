@@ -1,6 +1,7 @@
 Products List
 <section>
   @for (product of products$ | async; track product.id) {
+    <hr>
     <div>
       {{product.id}}, {{product.name}}, {{product.price}}, {{product.quantity}}
       <button (click)="cartRestService.addCartItem(product.id, 1)">Add to Cart</button>
