@@ -7,6 +7,8 @@ Cart template
               [disabled]="cartItem.count === 1">-</button>
 
       <button (click)="increaseClick($index)">+</button>
+
+      <button (click)="removeClick($index)">x</button>
     </div>
   }
   <button (click)="orderClick()">Order</button>

@@ -24,5 +24,7 @@ export class CartRestAPI {
     return this.http.put(`http://localhost:9090/cart/${cart_item_id}`,{count: count});
   }
 
+  removeCartItem(cart_item_id: number) {
+    return this.http.delete(`http://localhost:9090/cart/delete/${cart_item_id}`);
   }
 }
