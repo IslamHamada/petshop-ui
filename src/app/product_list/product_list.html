@@ -4,7 +4,10 @@ Products List
     <hr>
     <div>
       {{product.id}}, {{product.name}}, {{product.price}}, {{product.quantity}}
-      <button (click)="cartRestService.addCartItem(product.id, 1)">Add to Cart</button>
+      @if (product.quantity <= 0) {
+        OUT OF STOCK
+      }
+      <button (click)="addToCartClick(product.id)">Add to Cart</button>
     </div>
   }
 </section>
