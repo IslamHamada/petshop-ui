@@ -3,4 +3,5 @@ Cart template
   @for(cartItem of (cart$ | async); track $index) {
     <div>{{cartItem.id}}, {{cartItem.count}}, {{cartItem.productId}}, {{cartItem.userId}}</div>
   }
+  <button (click)="orderClick()">Order</button>
 </section>
