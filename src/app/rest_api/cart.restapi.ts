@@ -16,7 +16,9 @@ export class CartRestAPI {
     });
   }
 
-  getCartByUserId(id : number) {
-    return this.http.get<CartItem[]>(`http://localhost:9090/cart/${id}`);
+  getCartByUserId(user_id : number) {
+    return this.http.get<CartItem[]>(`http://localhost:9090/cart/${user_id}`);
+  }
+
   }
 }
