@@ -6,6 +6,7 @@ Order History
     <hr>
     <div>
       {{order.time}}
+      {{order.price}}
       @for (orderItem of order.elaborateOrderItems; track $index){
         <div>{{orderItem.product_name}} {{orderItem.price}} {{orderItem.count}}</div>
       }
