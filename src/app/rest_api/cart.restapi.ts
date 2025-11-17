@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CartItem} from '../models/CartItem';
+import {SessionCart} from '../models/SessionCart';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,9 @@ export class CartRestAPI {
 
   getCartItemCount(user_id: number) {
     return this.http.get<number>(`http://localhost:9090/cart/item_count/${user_id}`);
+  }
+
+  registerSessionCart(user_id: number,  cart : SessionCart) {
+    return this.http.post(`http://localhost:9090/cart/login_to_checkout/${user_id}`, cart);
   }
 }
