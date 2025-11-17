@@ -27,4 +27,8 @@ export class CartRestAPI {
   removeCartItem(cart_item_id: number) {
     return this.http.delete(`http://localhost:9090/cart/delete/${cart_item_id}`);
   }
+
+  getCartItemCount(user_id: number) {
+    return this.http.get<number>(`http://localhost:9090/cart/item_count/${user_id}`);
+  }
 }
