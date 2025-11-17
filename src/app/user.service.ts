@@ -20,7 +20,6 @@ export class UserService {
   private backendIdSubject = new BehaviorSubject<number | null>(null)
   backendId$ = this.backendIdSubject.asObservable();
   loggedIn = false;
-  cartItems = 0;
   user : User = {
     auth0_id: '',
     backend_id: -1,
@@ -38,7 +37,6 @@ export class UserService {
       tap(auth => {
         this.loggedIn = auth
         if(!auth){
-          this.cartItems = 0;
           this.backendIdSubject.next(null);
         }
       }),

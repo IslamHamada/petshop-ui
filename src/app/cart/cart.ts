@@ -27,17 +27,20 @@ export class Cart {
   increaseClick(cart_item_idx : number) {
     let cartItem : CartItem = this.cart[cart_item_idx];
     cartItem.count++;
+    this.userService.user.cartItemCount++;
     this.cartRestAPI.updateCartItemCount(cartItem.id, cartItem.count).subscribe()
   }
 
   decreaseClick(cart_item_idx : number) {
     let cartItem : CartItem = this.cart[cart_item_idx];
     cartItem.count--;
+    this.userService.user.cartItemCount--;
     this.cartRestAPI.updateCartItemCount(cartItem.id, cartItem.count).subscribe()
   }
 
   removeClick(cart_item_idx : number) {
     let cartItem : CartItem = this.cart[cart_item_idx];
+    this.userService.user.cartItemCount -= cartItem.count;
     this.cart.splice(cart_item_idx, 1);
     this.cartRestAPI.removeCartItem(cartItem.id).subscribe();
   }
