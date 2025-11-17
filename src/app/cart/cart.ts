@@ -26,22 +26,22 @@ export class Cart {
 
   increaseClick(cart_item_idx : number) {
     let cartItem : CartItem = this.cart[cart_item_idx];
-    cartItem.count++;
+    cartItem.cart_item_count++;
     this.userService.user.cartItemCount++;
-    this.cartRestAPI.updateCartItemCount(cartItem.id, cartItem.count).subscribe()
+    this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
   }
 
   decreaseClick(cart_item_idx : number) {
     let cartItem : CartItem = this.cart[cart_item_idx];
-    cartItem.count--;
+    cartItem.cart_item_count--;
     this.userService.user.cartItemCount--;
-    this.cartRestAPI.updateCartItemCount(cartItem.id, cartItem.count).subscribe()
+    this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
   }
 
   removeClick(cart_item_idx : number) {
     let cartItem : CartItem = this.cart[cart_item_idx];
-    this.userService.user.cartItemCount -= cartItem.count;
+    this.userService.user.cartItemCount -= cartItem.cart_item_count;
     this.cart.splice(cart_item_idx, 1);
-    this.cartRestAPI.removeCartItem(cartItem.id).subscribe();
+    this.cartRestAPI.removeCartItem(cartItem.cart_item_id).subscribe();
   }
 }
