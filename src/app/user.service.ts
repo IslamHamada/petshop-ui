@@ -11,6 +11,7 @@ import {
   tap
 } from 'rxjs';
 import {UserRestAPI} from './rest_api/user.restapi';
+import {CartRestAPI} from './rest_api/cart.restapi';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +26,11 @@ export class UserService {
     backend_id: -1,
     username: '',
     email: '',
-    token: ''
+    token: '',
+    cartItemCount: 0
   };
   userRestAPI = inject(UserRestAPI)
+  cartRestAPI = inject(CartRestAPI)
 
   constructor(public authObject: AuthService) {
     authObject.isAuthenticated$.pipe(
@@ -57,6 +60,9 @@ export class UserService {
       this.backendIdSubject.next(backendId);
       this.user.backend_id = backendId;
     });
+
+    this.rxOnBackendId$(id => this.cartRestAPI.getCartItemCount(id))
+      .subscribe(item_count => this.user.cartItemCount = item_count);
   }
 
   rxOnBackendId$<T>(f: (id: number) => Observable<T>): Observable<T> {
