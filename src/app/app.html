@@ -3,7 +3,7 @@
       <a [routerLink]="['/']">
         <div>PetShop</div>
       </a>
-      @if (!userService.loggedIn) {
+      @if (!userService.user.loggedIn) {
         <button (click)="userService.authObject.loginWithRedirect()">login</button>
       } @else {
         <a [routerLink]="['/profile']">

@@ -19,14 +19,14 @@ import {CartRestAPI} from './rest_api/cart.restapi';
 export class UserService {
   private backendIdSubject = new BehaviorSubject<number | null>(null)
   backendId$ = this.backendIdSubject.asObservable();
-  loggedIn = false;
   user : User = {
     auth0_id: '',
     backend_id: -1,
     username: '',
     email: '',
     token: '',
-    cartItemCount: 0
+    cartItemCount: 0,
+    loggedIn: false,
   };
   userRestAPI = inject(UserRestAPI)
   cartRestAPI = inject(CartRestAPI)
@@ -35,7 +35,7 @@ export class UserService {
     authObject.isAuthenticated$.pipe(
       distinctUntilChanged(),
       tap(auth => {
-        this.loggedIn = auth
+        this.user.loggedIn = auth
         if(!auth){
           this.backendIdSubject.next(null);
         }

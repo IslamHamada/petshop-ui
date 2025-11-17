@@ -21,7 +21,7 @@ export class ProductList {
 
   addToCartClick(product_id: number){
     this.userService.user.cartItemCount++;
-    if(this.userService.loggedIn){
+    if(this.userService.user.loggedIn){
       this.userService.rxOnBackendId$(z => this.cartRestService.addCartItem(product_id, 1, z)).subscribe();
     } else {
 
