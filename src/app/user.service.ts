@@ -12,6 +12,7 @@ import {
 } from 'rxjs';
 import {UserRestAPI} from './rest_api/user.restapi';
 import {CartRestAPI} from './rest_api/cart.restapi';
+import {SessionService} from './session/session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class UserService {
   };
   userRestAPI = inject(UserRestAPI)
   cartRestAPI = inject(CartRestAPI)
+  sessionService = inject(SessionService);
 
   constructor(public authObject: AuthService) {
     authObject.isAuthenticated$.pipe(
@@ -61,6 +63,16 @@ export class UserService {
 
     this.rxOnBackendId$(id => this.cartRestAPI.getCartItemCount(id))
       .subscribe(item_count => this.user.cartItemCount = item_count);
+
+    this.authObject.isAuthenticated$.pipe(
+      filter(auth => auth),
+      switchMap(() => this.authObject.appState$),
+      filter(state => state['withSessionCart']),
+      switchMap(() => this.rxOnBackendId$(id => this.sessionService.registerCartInBackendAfterLogin(id))),
+    ).subscribe(() => {
+      this.user.cartItemCount = this.sessionService.getCount();
+      this.sessionService.emptyCart();
+    })
   }
 
   rxOnBackendId$<T>(f: (id: number) => Observable<T>): Observable<T> {
