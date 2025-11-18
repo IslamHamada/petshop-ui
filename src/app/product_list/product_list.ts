@@ -25,7 +25,14 @@ export class ProductList {
     if(this.userService.user.loggedIn){
       this.userService.rxOnBackendId$(z => this.cartRestService.addCartItem(product.id, 1, z)).subscribe();
     } else {
-
+      let cartItem : CartItem = {
+        cart_item_id: -1,
+        cart_item_count: 1,
+        product_id: product.id,
+        product_price: product.price,
+        product_name: product.name,
+      }
+      this.sessionService.addCartItem(cartItem)
     }
   }
 }
