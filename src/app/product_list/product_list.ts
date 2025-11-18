@@ -19,10 +19,11 @@ export class ProductList {
 
   products$ = this.productRestService.getAllProducts();
 
-  addToCartClick(product_id: number){
+  addToCartClick(idx: number){
     this.userService.user.cartItemCount++;
+    let product = this.products[idx];
     if(this.userService.user.loggedIn){
-      this.userService.rxOnBackendId$(z => this.cartRestService.addCartItem(product_id, 1, z)).subscribe();
+      this.userService.rxOnBackendId$(z => this.cartRestService.addCartItem(product.id, 1, z)).subscribe();
     } else {
 
     }
