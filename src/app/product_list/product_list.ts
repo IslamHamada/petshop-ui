@@ -18,6 +18,11 @@ export class ProductList {
   userService = inject(UserService);
 
   products$ = this.productRestService.getAllProducts();
+  products : Product[] = [];
+
+  ngOnInit() {
+    this.products$.subscribe(products => this.products = products);
+  }
 
   addToCartClick(idx: number){
     this.userService.user.cartItemCount++;

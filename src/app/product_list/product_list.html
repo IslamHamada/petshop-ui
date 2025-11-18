@@ -1,7 +1,7 @@
 Products List
 <section>
-  @for (product of products$ | async; track product.id) {
-    <hr>
+
+    @for (product of products; track $index) {
     <div>
       {{product.id}}, {{product.name}}, {{product.price}}, {{product.quantity}}
       @if (product.quantity <= 0) {
