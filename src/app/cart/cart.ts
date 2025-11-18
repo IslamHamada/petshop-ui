@@ -12,15 +12,15 @@ import {Order} from '../models/Order';
 export class Cart {
   cartRestAPI = inject(CartRestAPI);
   userService = inject(UserService);
-  orderRestAPI = inject(OrderRestAPI)
+  sessionService = inject(SessionService);
   cart$  = this.userService.rxOnBackendId$<CartItem[]>(id => this.cartRestAPI.getCartByUserId(id));
   cart : CartItem[] = [];
 
   ngOnInit() {
-    this.cart$.subscribe(cart => this.cart = cart);
-  }
-
-  orderClick(){
+    if(this.userService.user.loggedIn)
+      this.cart$.subscribe(cart => this.cart = cart);
+    else
+      this.cart = this.sessionService.cart_items;
     this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id)).subscribe();
   }
 
@@ -28,20 +28,26 @@ export class Cart {
     let cartItem : CartItem = this.cart[cart_item_idx];
     cartItem.cart_item_count++;
     this.userService.user.cartItemCount++;
-    this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
+    if(this.userService.user.loggedIn) {
+      this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
+    }
   }
 
   decreaseClick(cart_item_idx : number) {
     let cartItem : CartItem = this.cart[cart_item_idx];
     cartItem.cart_item_count--;
     this.userService.user.cartItemCount--;
-    this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
+    if(this.userService.user.loggedIn) {
+      this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
+    }
   }
 
   removeClick(cart_item_idx : number) {
     let cartItem : CartItem = this.cart[cart_item_idx];
     this.userService.user.cartItemCount -= cartItem.cart_item_count;
     this.cart.splice(cart_item_idx, 1);
-    this.cartRestAPI.removeCartItem(cartItem.cart_item_id).subscribe();
+    if(this.userService.user.loggedIn) {
+      this.cartRestAPI.removeCartItem(cartItem.cart_item_id).subscribe();
+    }
   }
 }
