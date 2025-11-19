@@ -1,0 +1,9 @@
+<section>
+    <mat-card-header>
+      <h2>{{cart_item().product_name}}</h2>
+    </mat-card-header>
+    <img mat-card-lg-image [src]="cart_item().product_image" alt="image">
+    <mat-card-content>
+      <h4>€{{cart_item().product_price}} x {{cart_item().cart_item_count}}</h4>
+    </mat-card-content>
+</section>
