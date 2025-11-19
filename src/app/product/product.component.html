@@ -1,0 +1,24 @@
+<section>
+  @if (this.product) {
+    <mat-card>
+      <mat-card-header>
+        <h2>{{this.product.name}}</h2>
+
+      </mat-card-header>
+      <img mat-card-xl-image [src]="this.product.image" alt="image">
+      <mat-card-content>
+        <p>{{this.product.description}}</p>
+        <h4>€{{this.product.price}}</h4>
+          @if (this.product.quantity <= 0) {
+            <h3>OUT OF STOCK</h3>
+          } @else {
+            <mat-card-actions>
+              <button matButton="outlined" (click)="addToCartClick(this.product.id)">Add to Cart</button>
+            </mat-card-actions>
+          }
+      </mat-card-content>
+    </mat-card>
+
+    Reviews
+  }
+</section>
