@@ -11,4 +11,8 @@ export class ProductRestAPI {
   getAllProducts() {
     return this.http.get<Product[]>('http://localhost:9090/product');
   }
+
+  getProductById(id: number) {
+    return this.http.get<Product>(`http://localhost:9090/product/${id}`);
+  }
 }
