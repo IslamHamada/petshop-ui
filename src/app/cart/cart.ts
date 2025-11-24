@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core'
 import {CartRestAPI} from '../rest_api/cart.restapi';
 import {UserService} from '../user.service';
 import {CartItem} from '../models/CartItem';
+import {SessionService} from '../session/session.service';
 import {OrderRestAPI} from '../rest_api/order.restapi';
 import {Order} from '../models/Order';
 
