@@ -30,6 +30,8 @@ export class Cart {
     this.userService.user.cartItemCount++;
     if(this.userService.user.loggedIn) {
       this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
+    } else {
+      this.sessionService.copyCartToSession();
     }
   }
 
@@ -39,6 +41,8 @@ export class Cart {
     this.userService.user.cartItemCount--;
     if(this.userService.user.loggedIn) {
       this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
+    } else {
+      this.sessionService.copyCartToSession();
     }
   }
 
@@ -48,6 +52,8 @@ export class Cart {
     this.cart.splice(cart_item_idx, 1);
     if(this.userService.user.loggedIn) {
       this.cartRestAPI.removeCartItem(cartItem.cart_item_id).subscribe();
+    } else {
+      this.sessionService.copyCartToSession();
     }
   }
 }
