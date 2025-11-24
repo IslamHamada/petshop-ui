@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import {Home} from './home/home';
 import {Cart} from './cart/cart';
-import {Profile} from './profile/profile';
+import {ProfileComponent} from './profile/profile';
 import {ProductComponent} from './product/product.component';
 import {CheckoutComponent} from './checkout/checkout';
 
@@ -28,7 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    component: Profile,
+    component: ProfileComponent,
     title: 'Profile',
   }
 ];

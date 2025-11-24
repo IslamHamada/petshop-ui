@@ -11,7 +11,7 @@ import {AsyncPipe} from '@angular/common';
   ],
   templateUrl: 'profile.html'
 })
-export class Profile{
+export class ProfileComponent {
   userService = inject(UserService)
   orderRestAPI = inject(OrderRestAPI)
   orderHistory$ = this.userService.rxOnBackendId$<Order[]>(id => this.orderRestAPI.getOrderHistory(id));
