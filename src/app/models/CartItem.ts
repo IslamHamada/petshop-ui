@@ -4,4 +4,5 @@ export interface CartItem {
   product_name: string;
   product_price: number;
   cart_item_count: number
+  product_image: string;
 }

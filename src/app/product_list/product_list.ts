@@ -39,6 +39,7 @@ export class ProductList {
         product_id: product.id,
         product_price: product.price,
         product_name: product.name,
+        product_image: product.image,
       }
       this.sessionService.addCartItem(cartItem)
     }
