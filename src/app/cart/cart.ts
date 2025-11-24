@@ -6,6 +6,7 @@ import {MatCard, MatCardActions} from '@angular/material/card';
 import {MatButton, MatMiniFabButton} from '@angular/material/button';
 import {SessionService} from '../session/session.service';
 import {CartItemComponent} from '../cart_item/cart_item';
+import {Router} from '@angular/router';
 import {OrderRestAPI} from '../rest_api/order.restapi';
 import {Order} from '../models/Order';
 
@@ -24,7 +25,9 @@ import {Order} from '../models/Order';
 export class Cart {
   cartRestAPI = inject(CartRestAPI);
   userService = inject(UserService);
+  orderRestAPI = inject(OrderRestAPI);
   sessionService = inject(SessionService);
+  router = inject(Router);
   cart$  = this.userService.rxOnBackendId$<CartItem[]>(id => this.cartRestAPI.getCartByUserId(id));
   cart : CartItem[] = [];
   total_price : number = 0;
@@ -75,6 +78,14 @@ export class Cart {
       this.sessionService.copyCartToSession();
     }
     this.total_price -= cartItem.product_price * cartItem.cart_item_count;
+  }
+
+  proceedToCheckoutClick() {
+    this.orderRestAPI.order(this.userService.user.backend_id)
+        .subscribe(() => {
+          this.userService.user.cartItemCount = 0;
+          this.router.navigate(['/']);
+        });
   }
 
   loginToCheckoutClick() {
