@@ -7,6 +7,7 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage} fr
 import {MatButton} from '@angular/material/button';
 import {MatDivider} from '@angular/material/divider';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {SessionService} from '../session/session.service';
 import {RouterLink} from '@angular/router';
 
 @Component({
@@ -27,7 +28,7 @@ export class ProductList {
   productRestService = inject(ProductRestAPI);
   cartRestService = inject(CartRestAPI);
   userService = inject(UserService);
-
+  sessionService = inject(SessionService);
   products$ = this.productRestService.getAllProducts();
   products : Product[] = [];
 
