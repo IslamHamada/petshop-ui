@@ -21,7 +21,10 @@ export class ProductList {
   products : Product[] = [];
 
   ngOnInit() {
-    this.products$.subscribe(products => this.products = products);
+    this.products$.subscribe(products => {
+      this.products = products
+      this.computeVisibleProducts()
+    });
   }
 
   addToCartClick(idx: number){
@@ -39,5 +42,13 @@ export class ProductList {
       }
       this.sessionService.addCartItem(cartItem)
     }
+  }
+
+  visibleProducts : Product[] = [];
+  pageSize = 10;
+  pageIndex = 0;
+
+  computeVisibleProducts() {
+    this.visibleProducts = this.products.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize );
   }
 }
