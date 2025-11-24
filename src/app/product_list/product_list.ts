@@ -60,6 +60,12 @@ export class ProductList {
   pageSize = 10;
   pageIndex = 0;
 
+  protected handlePageEvent(e: PageEvent) {
+    this.pageIndex = e.pageIndex;
+    this.pageSize = e.pageSize;
+    this.computeVisibleProducts()
+  }
+
   computeVisibleProducts() {
     this.visibleProducts = this.products.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize );
   }
