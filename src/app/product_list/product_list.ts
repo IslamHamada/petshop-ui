@@ -14,6 +14,7 @@ import {RouterLink} from '@angular/router';
 @Component({
   selector: 'products-list',
   templateUrl: 'product_list.html',
+  styleUrls: ['product_list.sass'],
   imports: [
     MatCard,
     MatCardHeader,
