@@ -2,14 +2,25 @@ import {Component, inject} from '@angular/core';
 import {ProductRestAPI} from '../rest_api/product.restapi';
 import {CartRestAPI} from '../rest_api/cart.restapi';
 import {Product} from '../models/Product';
-import {AsyncPipe} from '@angular/common';
 import {UserService} from '../user.service';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage} from '@angular/material/card';
+import {MatButton} from '@angular/material/button';
+import {MatDivider} from '@angular/material/divider';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'products-list',
   templateUrl: 'product_list.html',
   imports: [
-    AsyncPipe
+    MatCard,
+    MatCardHeader,
+    MatCardActions,
+    MatButton,
+    MatPaginator,
+    MatCardImage,
+    MatCardContent,
+    RouterLink
   ]
 })
 export class ProductList {
