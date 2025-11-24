@@ -15,13 +15,18 @@ export class Cart {
   sessionService = inject(SessionService);
   cart$  = this.userService.rxOnBackendId$<CartItem[]>(id => this.cartRestAPI.getCartByUserId(id));
   cart : CartItem[] = [];
+  total_price : number = 0;
 
   ngOnInit() {
     if(this.userService.user.loggedIn)
-      this.cart$.subscribe(cart => this.cart = cart);
-    else
+      this.cart$.subscribe(cart => {
+        this.cart = cart
+        this.cart.forEach(item => this.total_price += item.product_price * item.cart_item_count);
+      });
+    else {
       this.cart = this.sessionService.cart_items;
-    this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id)).subscribe();
+      this.cart.forEach(item => this.total_price += item.product_price * item.cart_item_count);
+    }
   }
 
   increaseClick(cart_item_idx : number) {
@@ -33,6 +38,7 @@ export class Cart {
     } else {
       this.sessionService.copyCartToSession();
     }
+    this.total_price += cartItem.product_price;
   }
 
   decreaseClick(cart_item_idx : number) {
@@ -44,6 +50,7 @@ export class Cart {
     } else {
       this.sessionService.copyCartToSession();
     }
+    this.total_price -= cartItem.product_price;
   }
 
   removeClick(cart_item_idx : number) {
@@ -55,5 +62,7 @@ export class Cart {
     } else {
       this.sessionService.copyCartToSession();
     }
+    this.total_price -= cartItem.product_price * cartItem.cart_item_count;
+  }
   }
 }
