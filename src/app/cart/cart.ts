@@ -12,6 +12,7 @@ import {Order} from '../models/Order';
 @Component({
   selector: 'cart',
   templateUrl: 'cart.html',
+  styleUrl: 'cart.sass',
   imports: [
     MatCard,
     MatCardActions,
