@@ -1,22 +1,23 @@
 <main>
-    <header>
+    <mat-toolbar>
       <a [routerLink]="['/']">
         <div>PetShop</div>
       </a>
-      @if (!userService.user.loggedIn) {
-        <button (click)="userService.authObject.loginWithRedirect()">login</button>
-      } @else {
+      @if (userService.user.loggedIn) {
         <a [routerLink]="['/profile']">
           <div>{{userService.user.username}}</div>
         </a>
         <a [routerLink]="['/cart']">
-          <div>Cart ({{userService.cartItems}})</div>
+          <div [matBadge]="userService.user.cartItemCount">Cart ({{userService.user.cartItemCount}})</div>
         </a>
-        <button (click)="userService.authObject.logout()">logout</button>
+        <button matButton="filled" (click)="userService.authObject.logout()">logout</button>
+      } @else {
+        <a [routerLink]="['/cart']">
+          <div [matBadge]="sessionService.getCount()">Cart ({{sessionService.getCount()}})</div>
+        </a>
+        <button matButton="filled" (click)="userService.authObject.loginWithRedirect()">login</button>
       }
-
-    </header>
-
+    </mat-toolbar>
   <section>
     <router-outlet></router-outlet>
   </section>
