@@ -1,15 +1,39 @@
-Cart template
 <section>
-  @for(cartItem of cart; track $index) {
-    <div>{{cartItem.id}}, {{cartItem.count}}, {{cartItem.productId}}, {{cartItem.userId}}
+  @if (userService.user.loggedIn) {
+    @for(cartItem of cart; track $index) {
+      <mat-card>
+        <cart-item [cart_item]="cartItem"></cart-item>
+        <mat-card-actions>
+          <button matMiniFab (click)="decreaseClick($index)"
+                  [disabled]="cartItem.cart_item_count === 1">-</button>
 
-      <button (click)="decreaseClick($index)"
-              [disabled]="cartItem.count === 1">-</button>
+          <button matMiniFab (click)="increaseClick($index)">+</button>
 
-      <button (click)="increaseClick($index)">+</button>
+          <button matMiniFab (click)="removeClick($index)">x</button>
+        </mat-card-actions>
+      </mat-card>
+    }
+    <div>
+      <button matButton="outlined" (click)="proceedToCheckoutClick()" [disabled]="cart.length < 1">Proceed to checkout</button>
+      <h4>total price: €{{this.total_price}}</h4>
+    </div>
+  } @else {
+    @for (cartItem of this.sessionService.cart_items; track $index){
+      <mat-card>
+        <cart-item [cart_item]="cartItem"></cart-item>
+        <mat-card-actions>
+          <button matMiniFab (click)="decreaseClick($index)"
+                  [disabled]="cartItem.cart_item_count === 1">-</button>
 
-      <button (click)="removeClick($index)">x</button>
+          <button matMiniFab (click)="increaseClick($index)">+</button>
+
+          <button matMiniFab (click)="removeClick($index)">x</button>
+        </mat-card-actions>
+      </mat-card>
+    }
+    <div>
+      <button matButton="outlined" (click)="loginToCheckoutClick()" [disabled]="cart.length < 1">Login to checkout</button>
+      <h4>total price: €{{this.total_price}}</h4>
     </div>
   }
-  <button (click)="orderClick()">Order</button>
 </section>
