@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import {Home} from './home/home';
 import {Cart} from './cart/cart';
 import {ProfileComponent} from './profile/profile';
+import {ProductList} from './product_list/product_list';
 import {ProductComponent} from './product/product.component';
 import {CheckoutComponent} from './checkout/checkout';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Home,
+    component: ProductList,
     title: 'Home page',
   },
   {
