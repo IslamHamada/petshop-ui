@@ -1,6 +1,9 @@
 node {
   def repourl = "${REGISTRY_URL}/${PROJECT_ID}/${ARTIFACT_REGISTRY}"
   def version = sh(script: "date +%s", returnStdout: true).trim()
+  def npmHome = tool name: 'npm', type: 'npm'
+  def npmCMD = "${npmHome}/bin/npm"
+  def npxCMD = "${npmHome}/bin/npx"
   stage('Checkout'){
     checkout([$class: "GitSCM",
       branches: [[name: '*/main']],
@@ -11,8 +14,8 @@ node {
     withCredentials([file(credentialsId: 'gcp', variable: 'GC_KEY')]) {
       sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
       sh("gcloud auth configure-docker ${REGISTRY_URL}")
-      sh("npm install")
-      sh("npx ng build --configuration production")
+      sh("${npmCMD} install")
+      sh("${npxCMD} ng build --configuration production")
       sh("docker build -t ${repourl}/frontend:${version} .")
       sh("docker push ${repourl}/frontend:${version}")
     }
