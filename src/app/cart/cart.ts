@@ -64,5 +64,10 @@ export class Cart {
     }
     this.total_price -= cartItem.product_price * cartItem.cart_item_count;
   }
+
+  loginToCheckoutClick() {
+    this.userService.authObject.loginWithRedirect({
+      appState: { withSessionCart: true }
+    });
   }
 }
