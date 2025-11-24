@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import {UserService} from './user.service';
+import {SessionService} from './session/session.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,5 @@ import {UserService} from './user.service';
 })
 export class App {
   userService = inject(UserService)
+  sessionService = inject(SessionService)
 }
