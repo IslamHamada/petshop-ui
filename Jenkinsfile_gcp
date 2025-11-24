@@ -5,7 +5,7 @@ node {
     checkout([$class: "GitSCM",
       branches: [[name: '*/main']],
       userRemoteConfigs: [[credentialsId: 'git',
-      url: 'https://github.com/IslamHamada/petshop_ui']]])
+      url: 'https://github.com/IslamHamada/petshop_ui.git']]])
   }
   stage('Build and Push Image'){
     withCredentials([file(credentialsId: 'gcp', variable: 'GC_KEY')]) {
