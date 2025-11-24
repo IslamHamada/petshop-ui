@@ -11,7 +11,7 @@ import {SessionService} from './session/session.service';
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, MatToolbar, MatBadge, MatButton, MatDivider],
   templateUrl: './app.html',
-  styleUrls: ['./app.scss']
+  styleUrls: ['./app.sass']
 })
 export class App {
   userService = inject(UserService)
