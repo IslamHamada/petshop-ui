@@ -1,15 +1,12 @@
-Profile template
-
-Order History
 <section>
-  @for (order of orderHistory$ | async; track order.time) {
-    <hr>
-    <div>
-      {{order.time}}
-      {{order.price}}
-      @for (orderItem of order.elaborateOrderItems; track $index){
-        <div>{{orderItem.product_name}} {{orderItem.price}} {{orderItem.count}}</div>
-      }
-    </div>
-  }
+  <mat-card>
+    <mat-card-header>
+      <h3>Profile:</h3>
+    </mat-card-header>
+    <mat-card-content>
+      <span><b>Username: </b> <a>{{this.userService.user.username}}</a></span>
+      <br>
+      <span><b>Email: </b> <a>{{this.userService.user.email}}</a></span>
+    </mat-card-content>
+  </mat-card>
 </section>
