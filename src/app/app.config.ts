@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import {provideAuth0, authHttpInterceptorFn} from '@auth0/auth0-angular';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {environment} from 'environment/environment'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,16 +23,16 @@ export const appConfig: ApplicationConfig = {
       useRefreshTokens: true,
       httpInterceptor: {
         allowedList: [
-          'http://localhost:9090/cart',
-          'http://localhost:9090/cart/*',
+          `${environment.gatewayUrl}/cart`,
+          `${environment.gatewayUrl}/cart/*`,
 
-          'http://localhost:9090/order',
-          'http://localhost:9090/order/*',
+          `${environment.gatewayUrl}/order`,
+          `${environment.gatewayUrl}/order/*`,
 
-          'http://localhost:9090/user',
-          'http://localhost:9090/user/*',
+          `${environment.gatewayUrl}/user`,
+          `${environment.gatewayUrl}/user/*`,
           ]
       },
-    })
+    }),
   ]
 };
