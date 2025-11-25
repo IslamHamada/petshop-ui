@@ -2,8 +2,7 @@ node {
   def repourl = "${REGISTRY_URL}/${PROJECT_ID}/${ARTIFACT_REGISTRY}"
   def version = sh(script: "date +%s", returnStdout: true).trim()
   def nodeHome = "${tool 'NodeJS'}"
-  def dockerHome = "${tool 'docker'}"
-  def dockerCMD = "${dockerHome}/bin/docker"
+  def docker = "${tool 'docker'}"
   stage('Checkout'){
     checkout([$class: "GitSCM",
       branches: [[name: '*/main']],
@@ -18,8 +17,9 @@ node {
         sh("npm install")
         sh("npx ng build --configuration production")
       }
-      sh("${dockerCMD} build -t ${repourl}/frontend:${version} .")
-      sh("${dockerCMD} push ${repourl}/frontend:${version}")
+      dockerCMD = docker.build("${repourl}/frontend:${version} .")
+        .push()
+      sh("docker rmi ${repourl}/frontend:${version}")
     }
   }
   stage("Deploy"){
