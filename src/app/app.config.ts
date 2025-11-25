@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-atfpp36qj24tzo8l.us.auth0.com',
       clientId: 'UxGoFyQJ1IPiuc2RkPtb4v84jpe3x2jg',
       authorizationParams: {
-        redirect_uri: `${environment.gateway_url}`,
+        redirect_uri: `${environment.frontend_url}`,
         audience: 'http://random/api'
       },
       cacheLocation: 'localstorage',
