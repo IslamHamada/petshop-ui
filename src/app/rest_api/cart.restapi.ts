@@ -19,7 +19,7 @@ export class CartRestAPI {
   }
 
   getCartByUserId(user_id : number) {
-    return this.http.get<CartItem[]>(`${environment.gatewayUrl}/cart/${user_id}`);
+    return this.http.get<CartItem[]>(`${environment.gateway_url}/cart/${user_id}`);
   }
 
   updateCartItemCount(cart_item_id : number, count : number) {
