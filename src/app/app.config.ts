@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import {provideAuth0, authHttpInterceptorFn} from '@auth0/auth0-angular';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
-import {environment} from 'environment/environment'
+import {environment} from '../environment/environment'
 
 export const appConfig: ApplicationConfig = {
   providers: [
