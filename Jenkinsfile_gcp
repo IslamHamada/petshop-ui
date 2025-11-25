@@ -14,7 +14,7 @@ node {
     withCredentials([file(credentialsId: 'gcp', variable: 'GC_KEY')]) {
       sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
       sh("gcloud auth configure-docker ${REGISTRY_URL}")
-      nodejs(nodeInstallationName: 'NodeJs') {
+      nodejs(nodeJSInstallationName: 'NodeJs') {
         sh("npm install")
         sh("npx ng build --configuration production")
       }
