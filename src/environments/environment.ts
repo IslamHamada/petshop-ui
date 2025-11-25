@@ -1,4 +1,3 @@
 export const environment = {
-  production: false,
-  gateway_url: 'http://localhost:9090'
+  gateway_url: 'https://34.125.78.235:80'
 }
