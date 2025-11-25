@@ -1,7 +1,7 @@
 node {
   def repourl = "${REGISTRY_URL}/${PROJECT_ID}/${ARTIFACT_REGISTRY}"
   def version = sh(script: "date +%s", returnStdout: true).trim()
-  def nodeHome = ${tool 'NodeJS'}
+  def nodeHome = "${tool 'NodeJS'}"
   def npmCMD = "${nodeHome}/bin/npm"
   def npxCMD = "${nodeHome}/bin/npx"
   stage('Checkout'){
