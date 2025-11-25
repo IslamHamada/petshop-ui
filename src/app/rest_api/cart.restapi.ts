@@ -2,7 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CartItem} from '../models/CartItem';
 import {SessionCart} from '../models/SessionCart';
-import {environment} from '../environments/environment'
+import {environment} from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
