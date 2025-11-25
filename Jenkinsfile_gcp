@@ -16,7 +16,7 @@ node {
         sh("npm install")
         sh("npx ng build --configuration production")
       }
-      docker.withRegistry(repourl, 'git'){
+      docker.withRegistry("http://" + repourl, 'git'){
         def dockerTask = docker.build 'frontend:latest'
         dockerTask.push()
       }
