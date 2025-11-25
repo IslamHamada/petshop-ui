@@ -10,10 +10,10 @@ export class ProductRestAPI {
   http = inject(HttpClient);
 
   getAllProducts() {
-    return this.http.get<Product[]>(`${environment.gatewayUrl}/product`);
+    return this.http.get<Product[]>(`${environment.gateway_url}/product`);
   }
 
   getProductById(id: number) {
-    return this.http.get<Product>(`${environment.gatewayUrl}/product/${id}`);
+    return this.http.get<Product>(`${environment.gateway_url}/product/${id}`);
   }
 }

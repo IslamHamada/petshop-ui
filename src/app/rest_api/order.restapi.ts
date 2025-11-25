@@ -10,10 +10,10 @@ export class OrderRestAPI {
   http = inject(HttpClient);
 
   order(backend_id : number){
-    return this.http.post<Order>(`${environment.gatewayUrl}/order/${backend_id}`, {})
+    return this.http.post<Order>(`${environment.gateway_url}/order/${backend_id}`, {})
   }
 
   getOrderHistory(backend_id: number){
-    return this.http.get<Order[]>(`${environment.gatewayUrl}/order/${backend_id}`);
+    return this.http.get<Order[]>(`${environment.gateway_url}/order/${backend_id}`);
   }
 }

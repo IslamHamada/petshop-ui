@@ -10,7 +10,7 @@ export class UserRestAPI {
   http = inject(HttpClient);
 
   addUserToBackendAndGetId(user: User) {
-    return this.http.post<number>(`${environment.gatewayUrl}/user`, {
+    return this.http.post<number>(`${environment.gateway_url}/user`, {
       auth0_id: user.auth0_id,
       username: user.username,
       email: user.email,
