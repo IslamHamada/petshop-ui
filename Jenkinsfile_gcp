@@ -1,7 +1,6 @@
 node {
   def repourl = "${REGISTRY_URL}/${PROJECT_ID}/${ARTIFACT_REGISTRY}"
   def version = sh(script: "date +%s", returnStdout: true).trim()
-//  def docker = "${tool 'Docker'}"
   stage('Checkout'){
     checkout([$class: "GitSCM",
       branches: [[name: '*/main']],
@@ -22,22 +21,21 @@ node {
     }
   }
   stage("Deploy"){
-  step([$class: 'KubernetesEngineBuilder',
+    step([$class: 'KubernetesEngineBuilder',
+              projectId: env.PROJECT_ID,
+              clusterName: env.CLUSTER,
+              location: env.ZONE,
+              manifestPattern: 'k8s/clusterissuer.yaml',
+              credentialsId: env.PROJECT_ID,
+              verifyDeployments: true])
+      sh("sed -i 's|IMAGE_URL|${repourl}|g' k8s/deployment.yaml")
+      sh("sed -i 's|TAG|${version}|g' k8s/deployment.yaml")
+      step([$class: 'KubernetesEngineBuilder',
             projectId: env.PROJECT_ID,
             clusterName: env.CLUSTER,
             location: env.ZONE,
-            manifestPattern: 'k8s/clusterissuer.yaml',
+            manifestPattern: 'k8s/deployment.yaml',
             credentialsId: env.PROJECT_ID,
             verifyDeployments: true])
-    }
-    sh("sed -i 's|IMAGE_URL|${repourl}|g' k8s/deployment.yaml")
-    sh("sed -i 's|TAG|${version}|g' k8s/deployment.yaml")
-    step([$class: 'KubernetesEngineBuilder',
-          projectId: env.PROJECT_ID,
-          clusterName: env.CLUSTER,
-          location: env.ZONE,
-          manifestPattern: 'k8s/deployment.yaml',
-          credentialsId: env.PROJECT_ID,
-          verifyDeployments: true])
   }
 }
