@@ -18,7 +18,6 @@ node {
       }
       def dockerTask = docker.build 'frontend:latest'
       dockerTask.push()
-      sh("docker rmi frontend:'frontend:latest'")
     }
   }
   stage("Deploy"){
