@@ -6,6 +6,7 @@ import {MatBadge, MatBadgeModule} from '@angular/material/badge';
 import {MatButton} from '@angular/material/button';
 import {MatDivider} from '@angular/material/divider';
 import {SessionService} from './session/session.service';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +17,5 @@ import {SessionService} from './session/session.service';
 export class App {
   userService = inject(UserService)
   sessionService = inject(SessionService)
+  readonly environment = environment;
 }

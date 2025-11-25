@@ -10,7 +10,7 @@
         <a [routerLink]="['/cart']">
           <div [matBadge]="userService.user.cartItemCount">Cart ({{userService.user.cartItemCount}})</div>
         </a>
-        <button matButton="filled" (click)="userService.authObject.logout()">logout</button>
+        <button matButton="filled" (click)="userService.authObject.logout({logoutParams: {returnTo: environment.frontend_url}})">logout</button>
       } @else {
         <a [routerLink]="['/cart']">
           <div [matBadge]="sessionService.getCount()">Cart ({{sessionService.getCount()}})</div>
