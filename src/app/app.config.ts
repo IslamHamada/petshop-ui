@@ -23,14 +23,14 @@ export const appConfig: ApplicationConfig = {
       useRefreshTokens: true,
       httpInterceptor: {
         allowedList: [
-          `${environment.gatewayUrl}/cart`,
-          `${environment.gatewayUrl}/cart/*`,
+          `${environment.gateway_url}/cart`,
+          `${environment.gateway_url}/cart/*`,
 
-          `${environment.gatewayUrl}/order`,
-          `${environment.gatewayUrl}/order/*`,
+          `${environment.gateway_url}/order`,
+          `${environment.gateway_url}/order/*`,
 
-          `${environment.gatewayUrl}/user`,
-          `${environment.gatewayUrl}/user/*`,
+          `${environment.gateway_url}/user`,
+          `${environment.gateway_url}/user/*`,
           ]
       },
     }),
