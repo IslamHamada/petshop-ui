@@ -16,9 +16,9 @@ node {
         sh("npm install")
         sh("npx ng build --configuration production")
       }
-      dockerTask = docker.build("frontend:${version}")
+      dockerTask = docker.build("frontend:latest")
       dockerTask.push()
-      sh("docker rmi frontend:${version}")
+      sh("docker rmi frontend:'frontend:latest'")
     }
   }
   stage("Deploy"){
