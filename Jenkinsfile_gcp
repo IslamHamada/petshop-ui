@@ -17,8 +17,8 @@ node {
         sh("npm install")
         sh("npx ng build --configuration production")
       }
-      dockerCMD = docker.build("${repourl}/frontend:${version} .")
-        .push()
+      dockerTask = docker.build "${repourl}/frontend:${version}"
+      dockerTask.push()
       sh("docker rmi ${repourl}/frontend:${version}")
     }
   }
