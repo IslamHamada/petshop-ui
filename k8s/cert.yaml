@@ -4,7 +4,7 @@ metadata:
   name: frontend-cert
 spec:
   domains:
-    - petshop-demo.duckdns.org
+    - 34.54.201.1.sslip.io
 ---
 
 apiVersion: networking.k8s.io/v1
@@ -16,7 +16,7 @@ metadata:
     networking.gke.io/managed-certificates: frontend-cert
 spec:
   rules:
-    - host: petshop-demo.duckdns.org
+    - host: 34.54.201.1.sslip.io
       http:
         paths:
           - path: /
