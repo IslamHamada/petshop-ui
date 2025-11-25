@@ -1,7 +1,7 @@
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-  name: frontend-cert
+  name: frontend-cert-new
 spec:
   domains:
     - 34.54.201.1.sslip.io
@@ -13,7 +13,7 @@ metadata:
   name: frontend-ingress
   annotations:
     kubernetes.io/ingress.class: gce
-    networking.gke.io/managed-certificates: frontend-cert
+    networking.gke.io/managed-certificates: frontend-cert-new
 spec:
   rules:
     - host: 34.54.201.1.sslip.io
