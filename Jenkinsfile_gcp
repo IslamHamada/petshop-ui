@@ -21,21 +21,17 @@ node {
     }
   }
   stage("Deploy"){
+    withCredentials([file(credentialsId: 'gke-kubeconfig', variable: 'KUBECONFIG')]) {
+      sh("kubectl --kubeconfig=${KUBECONFIG} apply --validate=false -f k8s/clusterissuer.yaml")
+    }
+    sh("sed -i 's|IMAGE_URL|${repourl}|g' k8s/deployment.yaml")
+    sh("sed -i 's|TAG|${version}|g' k8s/deployment.yaml")
     step([$class: 'KubernetesEngineBuilder',
-              projectId: env.PROJECT_ID,
-              clusterName: env.CLUSTER,
-              location: env.ZONE,
-              manifestPattern: 'k8s/clusterissuer.yaml',
-              credentialsId: env.PROJECT_ID,
-              verifyDeployments: true])
-      sh("sed -i 's|IMAGE_URL|${repourl}|g' k8s/deployment.yaml")
-      sh("sed -i 's|TAG|${version}|g' k8s/deployment.yaml")
-      step([$class: 'KubernetesEngineBuilder',
-            projectId: env.PROJECT_ID,
-            clusterName: env.CLUSTER,
-            location: env.ZONE,
-            manifestPattern: 'k8s/deployment.yaml',
-            credentialsId: env.PROJECT_ID,
-            verifyDeployments: true])
+          projectId: env.PROJECT_ID,
+          clusterName: env.CLUSTER,
+          location: env.ZONE,
+          manifestPattern: 'k8s/deployment.yaml',
+          credentialsId: env.PROJECT_ID,
+          verifyDeployments: true])
   }
 }
