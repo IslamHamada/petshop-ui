@@ -9,4 +9,23 @@
       <span><b>Email: </b> <a>{{this.userService.user.email}}</a></span>
     </mat-card-content>
   </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <h3>Orders History:</h3>
+    </mat-card-header>
+    @for(order of orderHistory; track $index){
+      <mat-card>
+        <mat-card-header>
+          <span><h4>Time: </h4> {{order.time}}</span>
+          <span><h4>Price: </h4> {{order.price}}</span>
+        </mat-card-header>
+        <mat-card-content>
+          @for(orderItem of order.elaborateOrderItems; track $index){
+            <span><a [routerLink]="['/product', orderItem.product_id]">{{orderItem.product_name}} x {{orderItem.count}}</a></span>
+          }
+        </mat-card-content>
+      </mat-card>
+    }
+  </mat-card>
 </section>

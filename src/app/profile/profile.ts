@@ -8,6 +8,7 @@ import {MatDivider} from '@angular/material/divider';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatButton, MatIconButton} from '@angular/material/button';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'profile',
@@ -19,12 +20,19 @@ import {MatButton, MatIconButton} from '@angular/material/button';
     MatLabel,
     MatInput,
     MatIconButton,
-    MatButton
+    MatButton,
+    RouterLink
   ],
   templateUrl: 'profile.html'
 })
 export class ProfileComponent {
   userService = inject(UserService)
   orderRestAPI = inject(OrderRestAPI)
-  orderHistory$ = this.userService.rxOnBackendId$<Order[]>(id => this.orderRestAPI.getOrderHistory(id));
+  orderHistory : Order[] = [];
+
+  ngOnInit() {
+    this.userService.rxOnBackendId$<Order[]>(id => this.orderRestAPI.getOrderHistory(id)).subscribe(
+      orderHistory => this.orderHistory = orderHistory
+    )
+  }
 }
