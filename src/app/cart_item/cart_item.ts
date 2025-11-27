@@ -5,6 +5,7 @@ import {
   MatCardLgImage,
 } from '@angular/material/card';
 import {CartItem} from '../models/CartItem';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'cart-item',
@@ -13,6 +14,7 @@ import {CartItem} from '../models/CartItem';
     MatCardContent,
     MatCardHeader,
     MatCardLgImage,
+    RouterLink,
   ],
   styleUrl: 'cart_item.sass'
 })
