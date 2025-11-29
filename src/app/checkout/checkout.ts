@@ -22,6 +22,8 @@ import {Router, RouterLink} from '@angular/router';
     MatFormField,
     MatLabel,
     MatInput,
+    ReactiveFormsModule,
+    FormsModule,
     RouterLink
   ]
 })
