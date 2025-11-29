@@ -9,6 +9,7 @@ import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
+import {UserRestAPI} from '../rest_api/user.restapi';
 
 @Component({
   selector: 'profile',
@@ -27,6 +28,7 @@ import {RouterLink} from '@angular/router';
 })
 export class ProfileComponent {
   userService = inject(UserService)
+  userRestAPI = inject(UserRestAPI)
   orderRestAPI = inject(OrderRestAPI)
   userProfile: UserProfile = {
     email: '',
@@ -51,5 +53,10 @@ export class ProfileComponent {
       orderHistory => this.orderHistory = orderHistory
     );
   }
+
+  saveProfileClick(){
+    this.updated = false;
+    this.userService.rxOnBackendId$(id => this.userRestAPI.saveUserProfile(id, this.userProfile))
+      .subscribe(()=> this.updated = true);
   }
 }
