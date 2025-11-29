@@ -9,6 +9,7 @@ import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
+import {UserProfile} from '../models/UserProfile';
 import {UserRestAPI} from '../rest_api/user.restapi';
 
 @Component({
