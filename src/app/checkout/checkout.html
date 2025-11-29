@@ -1,5 +1,18 @@
 <section>
   <div>
+    <mat-card>
+      <mat-card-header>
+        <h3>Cart:</h3>
+      </mat-card-header>
+      <mat-card-content>
+        @for(cartItem of cart; track $index){
+          <a [routerLink]="['product/', cartItem.product_id]">{{cartItem.product_name}}</a> x <a>{{cartItem.cart_item_count}}</a>
+          <br>
+        }
+        <br>
+        <b>Total price: </b> <a>€{{this.totalPrice}}</a>
+      </mat-card-content>
+    </mat-card>
   </div>
 
   <form [formGroup]="form">

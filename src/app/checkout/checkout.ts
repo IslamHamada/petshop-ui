@@ -33,6 +33,7 @@ export class CheckoutComponent{
   userRestAPI = inject(UserRestAPI);
   cartRestAPI = inject(CartRestAPI);
   cart: CartItem[] = [];
+  totalPrice: number = 0;
   fb = inject(FormBuilder);
   userProfile: UserProfile = {
     email: '',
