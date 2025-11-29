@@ -7,6 +7,9 @@ import {MatLabel,
         MatFormField} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {UserProfile} from '../models/UserProfile';
+import {UserRestAPI} from '../rest_api/user.restapi';
+import {CartRestAPI} from '../rest_api/cart.restapi';
+import {CartItem} from '../models/CartItem';
 import {Router, RouterLink} from '@angular/router';
 
 @Component({
@@ -24,6 +27,7 @@ import {Router, RouterLink} from '@angular/router';
 export class CheckoutComponent{
   userService = inject(UserService);
   orderRestAPI = inject(OrderRestAPI);
+  userRestAPI = inject(UserRestAPI);
   cartRestAPI = inject(CartRestAPI);
   cart: CartItem[] = [];
   userProfile: UserProfile = {
