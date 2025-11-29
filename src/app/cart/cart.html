@@ -14,7 +14,7 @@
       </mat-card>
     }
     <div>
-      <button matButton="outlined" (click)="proceedToCheckoutClick()" [disabled]="cart.length < 1">Proceed to checkout</button>
+      <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1">Proceed to checkout</button>
       <h4>total price: €{{this.total_price}}</h4>
     </div>
   } @else {
