@@ -6,6 +6,7 @@ import {Order} from '../models/Order';
 import {MatLabel,
         MatFormField} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserProfile} from '../models/UserProfile';
 import {UserRestAPI} from '../rest_api/user.restapi';
 import {CartRestAPI} from '../rest_api/cart.restapi';
@@ -30,6 +31,7 @@ export class CheckoutComponent{
   userRestAPI = inject(UserRestAPI);
   cartRestAPI = inject(CartRestAPI);
   cart: CartItem[] = [];
+  fb = inject(FormBuilder);
   userProfile: UserProfile = {
     email: '',
     username: '',
@@ -43,6 +45,17 @@ export class CheckoutComponent{
     createdAt: '',
     phoneNumber: ''
   };
+  form = this.fb.nonNullable.group({
+    firstName: [''],
+    lastName: [''],
+    phoneNumber: [''],
+    country: [''],
+    city: [''],
+    postalCode: [''],
+    street: [''],
+    houseNumber: ['']
+  })
+
   router = inject(Router);
 
   ngOnInit(){
@@ -69,8 +82,11 @@ export class CheckoutComponent{
   }
 
   orderClick(){
-    this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id)).subscribe();
-    this.userService.user.cartItemCount = 0;
+    let profile = this.form.value;
+    this.userProfile = {
+      ...this.userProfile,
+      ...profile,
+    }
     this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id, this.userProfile)).subscribe(
       () => this.userService.user.cartItemCount = 0
     )
