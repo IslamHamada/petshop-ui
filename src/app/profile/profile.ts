@@ -11,6 +11,7 @@ import {MatButton, MatIconButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {UserProfile} from '../models/UserProfile';
 import {UserRestAPI} from '../rest_api/user.restapi';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'profile',
@@ -23,7 +24,8 @@ import {UserRestAPI} from '../rest_api/user.restapi';
     MatInput,
     MatIconButton,
     MatButton,
-    RouterLink
+    RouterLink,
+    FormsModule,
   ],
   templateUrl: 'profile.html'
 })
