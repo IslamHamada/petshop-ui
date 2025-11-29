@@ -28,11 +28,28 @@ import {RouterLink} from '@angular/router';
 export class ProfileComponent {
   userService = inject(UserService)
   orderRestAPI = inject(OrderRestAPI)
+  userProfile: UserProfile = {
+    email: '',
+    username: '',
+    firstName: '',
+    lastName: '',
+    city: '',
+    country: '',
+    houseNumber: '',
+    postalCode: '',
+    street: '',
+    createdAt: '',
+    phoneNumber: ''
+  };
   orderHistory : Order[] = [];
 
   ngOnInit() {
+    this.userService.rxOnBackendId$<UserProfile>(id => this.userRestAPI.getUserProfile(id)).subscribe(
+      userProfile => this.userProfile = userProfile
+    );
     this.userService.rxOnBackendId$<Order[]>(id => this.orderRestAPI.getOrderHistory(id)).subscribe(
       orderHistory => this.orderHistory = orderHistory
-    )
+    );
+  }
   }
 }
