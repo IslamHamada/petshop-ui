@@ -11,6 +11,7 @@ import {UserProfile} from '../models/UserProfile';
 import {UserRestAPI} from '../rest_api/user.restapi';
 import {CartRestAPI} from '../rest_api/cart.restapi';
 import {CartItem} from '../models/CartItem';
+import {MatCard, MatCardContent, MatCardHeader} from '@angular/material/card';
 import {Router, RouterLink} from '@angular/router';
 
 @Component({
@@ -24,6 +25,9 @@ import {Router, RouterLink} from '@angular/router';
     MatInput,
     ReactiveFormsModule,
     FormsModule,
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
     RouterLink
   ]
 })
