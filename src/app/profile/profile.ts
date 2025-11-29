@@ -45,6 +45,7 @@ export class ProfileComponent {
     createdAt: '',
     phoneNumber: ''
   };
+  updated = false
   orderHistory : Order[] = [];
 
   ngOnInit() {
