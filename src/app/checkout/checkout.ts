@@ -24,6 +24,8 @@ import {Router, RouterLink} from '@angular/router';
 export class CheckoutComponent{
   userService = inject(UserService);
   orderRestAPI = inject(OrderRestAPI);
+  cartRestAPI = inject(CartRestAPI);
+  cart: CartItem[] = [];
   userProfile: UserProfile = {
     email: '',
     username: '',
@@ -40,6 +42,12 @@ export class CheckoutComponent{
   router = inject(Router);
 
   ngOnInit(){
+    this.userService.rxOnBackendId$<CartItem[]>(id => this.cartRestAPI.getCartByUserId(id)).subscribe(
+      cart => {
+        this.cart = cart;
+        cart.forEach(item => this.totalPrice += item.product_price * item.cart_item_count);
+      }
+    )
     this.userService.rxOnBackendId$<UserProfile>(id => this.userRestAPI.getUserProfile(id)).subscribe(
       profile => {
         this.form.patchValue({
