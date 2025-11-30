@@ -69,6 +69,8 @@ export class ProductList {
   visibleProducts : Product[] = [];
   pageSize = 10;
   pageIndex = 0;
+  utility : string = "none"
+  for_animal: string = "none"
 
   protected handlePageEvent(e: PageEvent) {
     this.pageIndex = e.pageIndex;
@@ -82,4 +84,6 @@ export class ProductList {
 
   utility_list: string[] = []
   for_animal_list: string[] = []
+
+  searchTerm: string = "";
 }
