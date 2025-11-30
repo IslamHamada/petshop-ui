@@ -1,3 +1,13 @@
+<div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="searchTerm" (input)="search()">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+</div>
+
 <section>
     @for (product of visibleProducts; track $index) {
       <mat-card>

@@ -21,9 +21,15 @@ import {RouterLink} from '@angular/router';
     MatCardActions,
     MatButton,
     MatPaginator,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
     MatCardImage,
     MatCardContent,
-    RouterLink
+    RouterLink,
+    MatFormField,
+    MatLabel,
+    MatIcon
   ]
 })
 export class ProductList {
@@ -100,4 +106,10 @@ export class ProductList {
   for_animal_list: string[] = []
 
   searchTerm: string = "";
+
+  protected search() {
+    this.pageIndex = 0;
+    this.computeFilteredProducts();
+    this.computeVisibleProducts();
+  }
 }
