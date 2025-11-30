@@ -2,32 +2,21 @@ import {Component, inject, input} from '@angular/core';
 import {ProductRestAPI} from '../rest_api/product.restapi';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../models/Product';
-import {
-  MatCard,
-  MatCardActions,
-  MatCardContent,
-  MatCardHeader,
-  MatCardXlImage
-} from '@angular/material/card';
-import {MatButton} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 import {CartRestAPI} from '../rest_api/cart.restapi';
 import {UserService} from '../user.service';
 import {CartItem} from '../models/CartItem';
 import {SessionService} from '../session/session.service';
-import {MatChip, MatChipSet} from '@angular/material/chips';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'product-component',
   templateUrl: './product.component.html',
   imports: [
-    MatCard,
-    MatButton,
-    MatCardActions,
-    MatCardContent,
-    MatCardHeader,
-    MatCardXlImage,
-    MatChip,
-    MatChipSet
+    MatCardModule,
+    MatButtonModule,
+    MatChipsModule,
   ],
   styleUrls: ['./product_component.sass']
 })
