@@ -2,8 +2,8 @@ import {Component, inject} from '@angular/core'
 import {CartRestAPI} from '../rest_api/cart.restapi';
 import {UserService} from '../user.service';
 import {CartItem} from '../models/CartItem';
-import {MatCard, MatCardActions} from '@angular/material/card';
-import {MatButton, MatMiniFabButton} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 import {SessionService} from '../session/session.service';
 import {CartItemComponent} from '../cart_item/cart_item';
 import {Router, RouterLink} from '@angular/router';
@@ -15,10 +15,8 @@ import {Order} from '../models/Order';
   templateUrl: 'cart.html',
   styleUrl: 'cart.sass',
   imports: [
-    MatCard,
-    MatCardActions,
-    MatMiniFabButton,
-    MatButton,
+    MatCardModule,
+    MatButtonModule,
     CartItemComponent,
     RouterLink
   ]
