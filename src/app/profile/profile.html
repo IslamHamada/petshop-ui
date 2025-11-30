@@ -45,22 +45,34 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
+  <mat-card class="order_history">
     <mat-card-header>
       <h3>Orders History:</h3>
     </mat-card-header>
-    @for(order of orderHistory; track $index){
-      <mat-card>
-        <mat-card-header>
-          <span><h4>Time: </h4> {{order.time}}</span>
-          <span><h4>Price: </h4> {{order.price}}</span>
-        </mat-card-header>
-        <mat-card-content>
+
+    <mat-card-content>
+      @for(order of orderHistory; track $index){
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <b>Time</b><a>: {{order.time}}</a>
+            <b style="white-space: pre;"> Price</b><a>: €{{order.price}}</a>
+          </mat-expansion-panel-header>
+          <b>Items:</b><br>
           @for(orderItem of order.elaborateOrderItems; track $index){
-            <span><a [routerLink]="['/product', orderItem.product_id]">{{orderItem.product_name}} x {{orderItem.count}}</a></span>
+            <a [routerLink]="['/product', orderItem.product_id]">{{orderItem.product_name}}</a>  x {{orderItem.count}}
+            <br>
           }
-        </mat-card-content>
-      </mat-card>
-    }
+          <br>
+          <div>
+            <b>Name: </b> <a>{{order.firstName}} {{order.lastName}}</a> <br>
+            <b>Phone Number: </b> <a>{{order.phoneNumber}}</a><br><br>
+            <b>Address: </b><br>
+            {{order.country}} <br>
+            {{order.postalCode}} {{order.city}} <br>
+            {{order.street}} {{order.houseNumber}} <br>
+          </div>
+        </mat-expansion-panel>
+      }
+    </mat-card-content>
   </mat-card>
 </section>
