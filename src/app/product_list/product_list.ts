@@ -2,18 +2,16 @@ import {Component, inject} from '@angular/core';
 import {ProductRestAPI} from '../rest_api/product.restapi';
 import {CartRestAPI} from '../rest_api/cart.restapi';
 import {UserService} from '../user.service';
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage} from '@angular/material/card';
-import {MatButton} from '@angular/material/button';
-import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {SessionService} from '../session/session.service';
 import {Product} from '../models/Product';
 import {CartItem} from '../models/CartItem';
 import {RouterLink} from '@angular/router';
-import {MatChip, MatChipListbox, MatChipListboxChange, MatChipOption, MatChipSet} from '@angular/material/chips';
-import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
-import {MatLabel} from '@angular/material/form-field';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
-import {MatIcon} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 
 @Component({
@@ -21,25 +19,15 @@ import {MatInputModule} from '@angular/material/input';
   templateUrl: 'product_list.html',
   styleUrls: ['product_list.sass'],
   imports: [
-    MatCard,
-    MatCardHeader,
-    MatCardActions,
-    MatButton,
+    MatCardModule,
+    MatButtonModule,
     MatPaginatorModule,
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatCardImage,
-    MatCardContent,
     RouterLink,
-    MatChipSet,
-    MatChip,
-    MatChipListbox,
-    MatChipOption,
-    MatFormField,
-    MatLabel,
+    MatChipsModule,
     FormsModule,
-    MatIcon
   ]
 })
 export class ProductList {
