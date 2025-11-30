@@ -17,6 +17,16 @@
           }
         </mat-chip-listbox>
     </div>
+    <div>
+      <a>For Animal: </a>
+      <mat-chip-listbox (change)="onSelectForAnimal($event)">
+        @for(animal of for_animal_list; track $index) {
+          <mat-chip-option>
+            {{animal}}
+          </mat-chip-option>
+        }
+      </mat-chip-listbox>
+    </div>
   </div>
 </div>
 

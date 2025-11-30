@@ -118,6 +118,16 @@ export class ProductList {
     this.computeVisibleProducts();
   }
 
+  protected onSelectForAnimal(event: MatChipListboxChange) {
+    if(event.value == null)
+      this.for_animal = "none"
+    else
+      this.for_animal = event.value;
+    this.pageIndex = 0;
+    this.computeFilteredProducts();
+    this.computeVisibleProducts();
+  }
+
   searchTerm: string = "";
 
   protected search() {
