@@ -8,7 +8,6 @@ import {SessionService} from '../session/session.service';
 import {CartItemComponent} from '../cart_item/cart_item';
 import {Router, RouterLink} from '@angular/router';
 import {OrderRestAPI} from '../rest_api/order.restapi';
-import {Order} from '../models/Order';
 
 @Component({
   selector: 'cart',
