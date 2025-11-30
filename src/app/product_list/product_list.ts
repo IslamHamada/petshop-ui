@@ -78,6 +78,20 @@ export class ProductList {
     this.computeVisibleProducts();
   }
 
+  computeFilteredProducts() {
+    this.filtered_products = this.products.filter(
+      product => this.utility === "none" || product.utility === this.utility
+    ).filter(
+      product => this.for_animal === "none" || product.for_animal === this.for_animal
+    ).filter(
+      product => {
+        let cleanedTerm = this.searchTerm.toLowerCase().trim();
+        return product.name.toLowerCase().includes(cleanedTerm) ||
+        product.description.toLowerCase().includes(cleanedTerm)
+      }
+    );
+  }
+
   computeVisibleProducts() {
     this.visibleProducts = this.filtered_products.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize );
   }
