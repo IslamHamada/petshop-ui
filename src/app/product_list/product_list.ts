@@ -59,6 +59,7 @@ export class ProductList {
     }
   }
 
+  filtered_products : Product[] = [];
   visibleProducts : Product[] = [];
   pageSize = 10;
   pageIndex = 0;
@@ -70,6 +71,6 @@ export class ProductList {
   }
 
   computeVisibleProducts() {
-    this.visibleProducts = this.products.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize );
+    this.visibleProducts = this.filtered_products.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize );
   }
 }
