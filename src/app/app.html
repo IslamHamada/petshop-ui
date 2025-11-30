@@ -10,12 +10,13 @@
         <button matIconButton [matBadge]="this.userService.user.cartItemCount" [routerLink]="['/cart']" class="cart">
           <mat-icon>shopping_cart</mat-icon>
         </button>
-        <button matButton="filled" (click)="userService.authObject.logout({logoutParams: {returnTo: environment.frontend_url}})">logout</button>
+        <button matButton="filled" (click)="userService.authObject.logout({logoutParams: {returnTo: environment.frontend_url}})" class="logout">logout</button>
       } @else {
         <button matButton disabled></button>
         <button matIconButton [matBadge]="this.sessionService.getCount()" [routerLink]="['/cart']" class="cart">
           <mat-icon>shopping_cart</mat-icon>
         </button>
+        <button matButton="filled" (click)="userService.authObject.loginWithRedirect()" class="login">login</button>
       }
     </mat-toolbar>
   <section>
