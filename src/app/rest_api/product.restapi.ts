@@ -16,4 +16,12 @@ export class ProductRestAPI {
   getProductById(id: number) {
     return this.http.get<Product>(`${environment.gateway_url}/product/${id}`);
   }
+
+  getUtilities() {
+    return this.http.get<string[]>(`${environment.gateway_url}/product/utilities`);
+  }
+
+  getForAnimals() {
+    return this.http.get<string[]>(`${environment.gateway_url}/product/for_animals`);
+  }
 }
