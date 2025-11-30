@@ -2,27 +2,26 @@ import {Component, inject} from '@angular/core';
 import {UserService} from '../user.service';
 import {OrderRestAPI} from '../rest_api/order.restapi';
 import {Order} from '../models/Order';
-import {MatCard, MatCardContent, MatCardHeader} from '@angular/material/card';
-import {MatFormField, MatLabel} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {UserProfile} from '../models/UserProfile';
 import {UserRestAPI} from '../rest_api/user.restapi';
 import {FormsModule} from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'profile',
   imports: [
-    MatCard,
-    MatCardHeader,
-    MatCardContent,
-    MatFormField,
-    MatLabel,
-    MatInput,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatButtonModule,
     RouterLink,
     FormsModule,
+    MatExpansionModule
   ],
   templateUrl: 'profile.html'
 })
