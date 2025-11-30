@@ -4,9 +4,9 @@
       <h3>Profile:</h3>
     </mat-card-header>
     <mat-card-content>
-      <span><b>Username: </b> <a>{{this.userService.user.username}}</a></span><br>
-      <span><b>Email: </b> <a>{{this.userService.user.email}}</a></span><br>
-      <span><b>Created At: </b> <a>{{this.userProfile.createdAt}}</a></span><br>
+      <b>Username: </b> <a>{{this.userService.user.username}}</a><br>
+      <b>Email: </b> <a>{{this.userService.user.email}}</a><br>
+      <b>Created At: </b> <a>{{this.userProfile.createdAt}}</a><br>
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input matInput [(ngModel)]="userProfile.firstName" name="first_name">
