@@ -8,6 +8,10 @@
       <img mat-card-xl-image [src]="this.product.image" alt="image">
       <mat-card-content>
         <p>{{this.product.description}}</p>
+        <mat-chip-set>
+          <mat-chip>{{this.product.utility}}</mat-chip>
+          <mat-chip>{{this.product.for_animal}}</mat-chip>
+        </mat-chip-set>
         <h4>€{{this.product.price}}</h4>
           @if (this.product.quantity <= 0) {
             <h3>OUT OF STOCK</h3>

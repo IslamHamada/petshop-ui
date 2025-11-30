@@ -14,6 +14,7 @@ import {CartRestAPI} from '../rest_api/cart.restapi';
 import {UserService} from '../user.service';
 import {CartItem} from '../models/CartItem';
 import {SessionService} from '../session/session.service';
+import {MatChip, MatChipSet} from '@angular/material/chips';
 
 @Component({
   selector: 'product-component',
@@ -24,7 +25,9 @@ import {SessionService} from '../session/session.service';
     MatCardActions,
     MatCardContent,
     MatCardHeader,
-    MatCardXlImage
+    MatCardXlImage,
+    MatChip,
+    MatChipSet
   ],
   styleUrls: ['./product_component.sass']
 })
