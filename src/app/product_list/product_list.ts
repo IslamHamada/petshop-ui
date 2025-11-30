@@ -35,6 +35,12 @@ export class ProductList {
   products : Product[] = [];
 
   ngOnInit() {
+    this.productRestService.getUtilities().subscribe(
+      utilities => this.utility_list = utilities
+    )
+    this.productRestService.getForAnimals().subscribe(
+      for_animals => this.for_animal_list = for_animals
+    )
     this.products$.subscribe(products => {
       this.products = products
       this.computeVisibleProducts()
@@ -73,4 +79,7 @@ export class ProductList {
   computeVisibleProducts() {
     this.visibleProducts = this.filtered_products.slice(this.pageIndex * this.pageSize, (this.pageIndex + 1) * this.pageSize );
   }
+
+  utility_list: string[] = []
+  for_animal_list: string[] = []
 }
