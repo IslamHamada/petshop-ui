@@ -24,7 +24,6 @@ import {MatInputModule} from '@angular/material/input';
     MatPaginatorModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule,
     RouterLink,
     MatChipsModule,
     FormsModule,
