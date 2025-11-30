@@ -43,7 +43,6 @@ export class ProductComponent {
   ngOnInit() {
     this.productRestAPI.getProductById(this.id).subscribe(
       product => {
-        console.log(product)
         this.product = product
       }
     )
