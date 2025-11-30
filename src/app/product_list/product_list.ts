@@ -4,12 +4,17 @@ import {CartRestAPI} from '../rest_api/cart.restapi';
 import {UserService} from '../user.service';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage} from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
-import {MatDivider} from '@angular/material/divider';
-import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {SessionService} from '../session/session.service';
 import {Product} from '../models/Product';
 import {CartItem} from '../models/CartItem';
 import {RouterLink} from '@angular/router';
+import {MatChip, MatChipListbox, MatChipListboxChange, MatChipOption, MatChipSet} from '@angular/material/chips';
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
+import {MatLabel} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import {MatIcon} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'products-list',
@@ -20,17 +25,20 @@ import {RouterLink} from '@angular/router';
     MatCardHeader,
     MatCardActions,
     MatButton,
-    MatPaginator,
+    MatPaginatorModule,
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
     MatCardImage,
     MatCardContent,
     RouterLink,
+    MatChipSet,
+    MatChip,
     MatChipListbox,
     MatChipOption,
     MatFormField,
     MatLabel,
+    FormsModule,
     MatIcon
   ]
 })
