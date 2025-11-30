@@ -75,7 +75,7 @@ export class ProductList {
   protected handlePageEvent(e: PageEvent) {
     this.pageIndex = e.pageIndex;
     this.pageSize = e.pageSize;
-    this.computeVisibleProducts()
+    this.computeVisibleProducts();
   }
 
   computeVisibleProducts() {
