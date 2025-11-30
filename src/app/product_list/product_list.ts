@@ -48,7 +48,7 @@ export class ProductList {
       for_animals => this.for_animal_list = for_animals
     )
     this.products$.subscribe(products => {
-      this.products = products
+      this.products = products;
       this.computeVisibleProducts()
     });
   }
