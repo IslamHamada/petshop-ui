@@ -23,7 +23,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FormsModule,
     MatExpansionModule
   ],
-  templateUrl: 'profile.html'
+  templateUrl: 'profile.html',
+  styleUrl: 'profile.sass',
 })
 export class ProfileComponent {
   userService = inject(UserService)
