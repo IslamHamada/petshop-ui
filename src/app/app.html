@@ -7,9 +7,9 @@
         <button matButton [routerLink]="['/profile']" class="profile">
           <div>{{userService.user.username}}</div>
         </button>
-        <a [routerLink]="['/cart']">
-          <div [matBadge]="userService.user.cartItemCount">Cart ({{userService.user.cartItemCount}})</div>
-        </a>
+        <button matIconButton [matBadge]="this.userService.user.cartItemCount" [routerLink]="['/cart']" class="cart">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
         <button matButton="filled" (click)="userService.authObject.logout({logoutParams: {returnTo: environment.frontend_url}})">logout</button>
       } @else {
         <a [routerLink]="['/cart']">
