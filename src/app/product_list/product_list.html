@@ -18,6 +18,13 @@
           </a>
         </mat-card-header>
         <mat-card-content>
+
+          <div>
+            <mat-chip-set>
+              <mat-chip>{{product.utility}}</mat-chip>
+              <mat-chip>{{product.for_animal}}</mat-chip>
+            </mat-chip-set>
+          </div>
           <h4>€{{product.price}}</h4>
           @if (product.quantity <= 0) {
             <h3>OUT OF STOCK</h3>
