@@ -7,6 +7,7 @@
       <b>Username: </b> <a>{{this.userService.user.username}}</a><br>
       <b>Email: </b> <a>{{this.userService.user.email}}</a><br>
       <b>Created At: </b> <a>{{this.userProfile.createdAt}}</a><br>
+      <div>
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input matInput [(ngModel)]="userProfile.firstName" name="first_name">
@@ -40,6 +41,7 @@
           <input matInput [(ngModel)]="userProfile.houseNumber" name="house_number">
         </mat-form-field><br>
         <button matButton="tonal" (click)="saveProfileClick()">Update</button>
+      </div>
     </mat-card-content>
   </mat-card>
 
