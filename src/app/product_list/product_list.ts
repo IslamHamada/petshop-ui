@@ -27,6 +27,8 @@ import {RouterLink} from '@angular/router';
     MatCardImage,
     MatCardContent,
     RouterLink,
+    MatChipListbox,
+    MatChipOption,
     MatFormField,
     MatLabel,
     MatIcon
@@ -105,6 +107,16 @@ export class ProductList {
 
   utility_list: string[] = []
   for_animal_list: string[] = []
+
+  protected onSelectUtility(event: MatChipListboxChange) {
+    if(event.value == null)
+      this.utility = "none"
+    else
+        this.utility = event.value;
+    this.pageIndex = 0;
+    this.computeFilteredProducts();
+    this.computeVisibleProducts();
+  }
 
   searchTerm: string = "";
 

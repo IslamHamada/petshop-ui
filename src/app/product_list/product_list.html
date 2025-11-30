@@ -6,6 +6,18 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
+  <div class="chips">
+    <div>
+        <a>Utility: </a>
+        <mat-chip-listbox (change)="onSelectUtility($event)">
+          @for(utility of utility_list; track $index) {
+            <mat-chip-option>
+              {{utility}}
+            </mat-chip-option>
+          }
+        </mat-chip-listbox>
+    </div>
+  </div>
 </div>
 
 <section>
