@@ -49,7 +49,8 @@ export class ProductList {
     )
     this.products$.subscribe(products => {
       this.products = products;
-      this.computeVisibleProducts()
+      this.computeFilteredProducts();
+      this.computeVisibleProducts();
     });
   }
 
