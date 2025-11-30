@@ -4,9 +4,9 @@
         PetShop
       </button>
       @if (userService.user.loggedIn) {
-        <a [routerLink]="['/profile']">
+        <button matButton [routerLink]="['/profile']" class="profile">
           <div>{{userService.user.username}}</div>
-        </a>
+        </button>
         <a [routerLink]="['/cart']">
           <div [matBadge]="userService.user.cartItemCount">Cart ({{userService.user.cartItemCount}})</div>
         </a>
