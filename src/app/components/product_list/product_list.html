@@ -1,34 +1,35 @@
-<div>
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Search</mat-label>
-      <input matInput [(ngModel)]="searchTerm" (input)="search()">
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-  </div>
-  <div class="chips">
+<section>
+  <div class="filters">
     <div>
-        <a>Utility: </a>
-        <mat-chip-listbox (change)="onSelectUtility($event)">
-          @for(utility of utility_list; track $index) {
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (input)="search()">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="chips">
+      <div>
+          <a>Utility: </a>
+          <mat-chip-listbox (change)="onSelectUtility($event)">
+            @for(utility of utility_list; track $index) {
+              <mat-chip-option>
+                {{utility}}
+              </mat-chip-option>
+            }
+          </mat-chip-listbox>
+      </div>
+      <div>
+        <a>For Animal: </a>
+        <mat-chip-listbox (change)="onSelectForAnimal($event)">
+          @for(animal of for_animal_list; track $index) {
             <mat-chip-option>
-              {{utility}}
+              {{animal}}
             </mat-chip-option>
           }
         </mat-chip-listbox>
-    </div>
-    <div>
-      <a>For Animal: </a>
-      <mat-chip-listbox (change)="onSelectForAnimal($event)">
-        @for(animal of for_animal_list; track $index) {
-          <mat-chip-option>
-            {{animal}}
-          </mat-chip-option>
-        }
-      </mat-chip-listbox>
+      </div>
     </div>
   </div>
-</div>
 
 <section>
     @for (product of visibleProducts; track $index) {
@@ -68,3 +69,4 @@
                  (page)="handlePageEvent($event)">
   </mat-paginator>
 </div>
+</section>
