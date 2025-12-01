@@ -68,6 +68,7 @@ export class CheckoutComponent{
   router = inject(Router);
 
   init_loading = 2;
+  issue_order_loading : boolean = false;
 
   ngOnInit(){
     this.userService.rxOnBackendId$<CartItem[]>(id => this.cartRestAPI.getCartByUserId(id)).subscribe(
@@ -95,6 +96,7 @@ export class CheckoutComponent{
   }
 
   orderClick(){
+    this.issue_order_loading = true;
     let profile = this.form.value;
     this.userProfile = {
       ...this.userProfile,
@@ -102,6 +104,7 @@ export class CheckoutComponent{
     }
     this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id, this.userProfile)).subscribe(
       order => {
+        this.issue_order_loading = false;
         this.userService.user.cartItemCount = 0
         this.router.navigate([`/`])
       }
