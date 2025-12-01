@@ -7,7 +7,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {SessionService} from '../../injectables/session/session.service';
 import {CartItemComponent} from '../cart_item/cart_item';
 import {Router, RouterLink} from '@angular/router';
-import {OrderRestAPI} from '../../injectables/rest/order.restapi';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
@@ -27,7 +26,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 export class Cart {
   cartRestAPI = inject(CartRestAPI);
   userService = inject(UserService);
-  orderRestAPI = inject(OrderRestAPI);
   sessionService = inject(SessionService);
   router = inject(Router);
   cart$  = this.userService.rxOnBackendId$<CartItem[]>(id => this.cartRestAPI.getCartByUserId(id));
