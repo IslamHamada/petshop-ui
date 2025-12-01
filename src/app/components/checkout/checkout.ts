@@ -97,8 +97,10 @@ export class CheckoutComponent{
       ...profile,
     }
     this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id, this.userProfile)).subscribe(
-      () => this.userService.user.cartItemCount = 0
+      order => {
+        this.userService.user.cartItemCount = 0
+        this.router.navigate([`/`])
+      }
     )
-    this.router.navigate(['/']);
   }
 }
