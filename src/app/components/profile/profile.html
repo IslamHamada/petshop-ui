@@ -44,6 +44,9 @@
           <input matInput [(ngModel)]="userProfile.houseNumber" name="house_number">
         </mat-form-field><br>
         <button matButton="outlined" (click)="saveProfileClick()">Update</button>
+        <div [style.visibility]="update_profile_loading ? 'visible' : 'hidden'">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>
