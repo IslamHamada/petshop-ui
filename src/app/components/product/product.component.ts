@@ -1,13 +1,13 @@
 import {Component, inject, input} from '@angular/core';
-import {ProductRestAPI} from '../rest_api/product.restapi';
+import {ProductRestAPI} from '../../injectables/rest/product.restapi';
 import {ActivatedRoute} from '@angular/router';
-import {Product} from '../models/Product';
+import {Product} from '../../models/Product';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-import {CartRestAPI} from '../rest_api/cart.restapi';
-import {UserService} from '../user.service';
-import {CartItem} from '../models/CartItem';
-import {SessionService} from '../session/session.service';
+import {CartRestAPI} from '../../injectables/rest/cart.restapi';
+import {UserService} from '../../user.service';
+import {CartItem} from '../../models/CartItem';
+import {SessionService} from '../../injectables/session/session.service';
 import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
