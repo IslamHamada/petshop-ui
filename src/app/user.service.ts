@@ -10,9 +10,9 @@ import {
   switchMap,
   tap
 } from 'rxjs';
-import {UserRestAPI} from './rest_api/user.restapi';
-import {CartRestAPI} from './rest_api/cart.restapi';
-import {SessionService} from './session/session.service';
+import {UserRestAPI} from './injectables/rest/user.restapi';
+import {CartRestAPI} from './injectables/rest/cart.restapi';
+import {SessionService} from './injectables/session/session.service';
 
 @Injectable({
   providedIn: 'root'

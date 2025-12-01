@@ -5,7 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {SessionService} from './session/session.service';
+import {SessionService} from './injectables/session/session.service';
 import {environment} from '../environments/environment';
 
 @Component({
