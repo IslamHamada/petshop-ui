@@ -31,35 +31,35 @@
     </div>
   </div>
 
-<section>
-    @for (product of visibleProducts; track $index) {
-      <mat-card>
-        <img mat-card-image [src]="product.image" alt="image">
-        <mat-card-header>
-          <a [routerLink]="['/product', product.id]">
-            {{product.name}}
-          </a>
-        </mat-card-header>
-        <mat-card-content>
+  <div class="products">
+      @for (product of visibleProducts; track $index) {
+        <mat-card>
+          <img mat-card-image [src]="product.image" alt="image">
+          <mat-card-header>
+            <a [routerLink]="['/product', product.id]">
+              {{product.name}}
+            </a>
+          </mat-card-header>
+          <mat-card-content>
 
-          <div>
-            <mat-chip-set>
-              <mat-chip>{{product.utility}}</mat-chip>
-              <mat-chip>{{product.for_animal}}</mat-chip>
-            </mat-chip-set>
-          </div>
-          <h4>€{{product.price}}</h4>
-          @if (product.quantity <= 0) {
-            <h3>OUT OF STOCK</h3>
-          } @else {
-            <mat-card-actions>
-              <button matButton="outlined" (click)="addToCartClick($index)">Add to Cart</button>
-            </mat-card-actions>
-          }
-        </mat-card-content>
-      </mat-card>
-    }
-</section>
+            <div>
+              <mat-chip-set>
+                <mat-chip>{{product.utility}}</mat-chip>
+                <mat-chip>{{product.for_animal}}</mat-chip>
+              </mat-chip-set>
+            </div>
+            <h4>€{{product.price}}</h4>
+            @if (product.quantity <= 0) {
+              <h3>OUT OF STOCK</h3>
+            } @else {
+              <mat-card-actions>
+                <button matButton="outlined" (click)="addToCartClick($index)">Add to Cart</button>
+              </mat-card-actions>
+            }
+          </mat-card-content>
+        </mat-card>
+      }
+  </div>
 
 <div class="paginator">
   <mat-paginator [length]="this.filtered_products.length"
