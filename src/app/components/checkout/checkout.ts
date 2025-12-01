@@ -25,7 +25,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     FormsModule,
     MatCardModule,
-    RouterLink
+    RouterLink,
     MatProgressSpinnerModule,
   ]
 })
