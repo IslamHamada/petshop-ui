@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
-import {CartItem} from '../models/CartItem';
+import {CartItem} from '../../models/CartItem';
 import {RouterLink} from '@angular/router';
 
 @Component({
