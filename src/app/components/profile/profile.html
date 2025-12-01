@@ -10,7 +10,7 @@
       <b>Username: </b> <a>{{this.userService.user.username}}</a><br>
       <b>Email: </b> <a>{{this.userService.user.email}}</a><br>
       <b>Created At: </b> <a>{{this.userProfile.createdAt}}</a><br>
-      <div>
+      <div [submitting]="this.update_profile_loading">
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input matInput [(ngModel)]="userProfile.firstName" name="first_name">

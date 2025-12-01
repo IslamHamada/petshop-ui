@@ -13,6 +13,7 @@ import {CartItem} from '../../models/CartItem';
 import {MatCardModule} from '@angular/material/card';
 import {Router, RouterLink} from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {SubmittingDirective} from '../../directives/submitting';
 
 @Component({
   selector: 'checkout',
@@ -27,6 +28,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatCardModule,
     RouterLink,
     MatProgressSpinnerModule,
+    SubmittingDirective,
   ]
 })
 export class CheckoutComponent{

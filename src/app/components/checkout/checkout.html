@@ -18,7 +18,7 @@
     </mat-card>
   </div>
 
-  <form [formGroup]="form">
+  <form [formGroup]="form" [submitting]="issue_order_loading">
     <mat-form-field appearance="outline">
       <mat-label>First Name</mat-label>
       <input matInput formControlName="firstName" name="first_name" required>
