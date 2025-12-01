@@ -9,6 +9,7 @@ import {CartItemComponent} from '../cart_item/cart_item';
 import {Router, RouterLink} from '@angular/router';
 import {OrderRestAPI} from '../../injectables/rest/order.restapi';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'cart',
@@ -19,7 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     CartItemComponent,
     RouterLink,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class Cart {
