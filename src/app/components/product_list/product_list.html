@@ -61,12 +61,12 @@
       }
   </div>
 
-<div class="paginator">
-  <mat-paginator [length]="this.filtered_products.length"
-                 [pageSize]="pageSize"
-                 [pageIndex]="pageIndex"
-                 showFirstLastButtons
-                 (page)="handlePageEvent($event)">
-  </mat-paginator>
-</div>
+  <div class="paginator">
+    <mat-paginator [length]="this.filtered_products.length"
+                   [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   showFirstLastButtons
+                   (page)="handlePageEvent($event)">
+    </mat-paginator>
+  </div>
 </section>
