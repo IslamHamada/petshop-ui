@@ -5,11 +5,17 @@
         <cart-item [cart_item]="cartItem"></cart-item>
         <mat-card-actions>
           <button matMiniFab (click)="decreaseClick($index)"
-                  [disabled]="cartItem.cart_item_count === 1">-</button>
+                  [disabled]="cartItem.cart_item_count === 1">
+            <mat-icon>remove</mat-icon>
+          </button>
 
-          <button matMiniFab (click)="increaseClick($index)">+</button>
+          <button matMiniFab (click)="increaseClick($index)">
+            <mat-icon>add</mat-icon>
+          </button>
 
-          <button matMiniFab (click)="removeClick($index)">x</button>
+          <button matMiniFab (click)="removeClick($index)">
+            <mat-icon>close</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-card>
     }
@@ -23,11 +29,17 @@
         <cart-item [cart_item]="cartItem"></cart-item>
         <mat-card-actions>
           <button matMiniFab (click)="decreaseClick($index)"
-                  [disabled]="cartItem.cart_item_count === 1">-</button>
+                  [disabled]="cartItem.cart_item_count === 1">
+            <mat-icon>remove</mat-icon>
+          </button>
 
-          <button matMiniFab (click)="increaseClick($index)">+</button>
+          <button matMiniFab (click)="increaseClick($index)">
+            <mat-icon>add</mat-icon>
+          </button>
 
-          <button matMiniFab (click)="removeClick($index)">x</button>
+          <button matMiniFab (click)="removeClick($index)">
+            <mat-icon>close</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-card>
     }

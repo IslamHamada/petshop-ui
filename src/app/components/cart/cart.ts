@@ -1,13 +1,14 @@
 import {Component, inject} from '@angular/core'
-import {CartRestAPI} from '../rest_api/cart.restapi';
-import {UserService} from '../user.service';
-import {CartItem} from '../models/CartItem';
+import {CartRestAPI} from '../../injectables/rest/cart.restapi';
+import {UserService} from '../../user.service';
+import {CartItem} from '../../models/CartItem';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-import {SessionService} from '../session/session.service';
+import {SessionService} from '../../injectables/session/session.service';
 import {CartItemComponent} from '../cart_item/cart_item';
 import {Router, RouterLink} from '@angular/router';
-import {OrderRestAPI} from '../rest_api/order.restapi';
+import {OrderRestAPI} from '../../injectables/rest/order.restapi';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'cart',
@@ -17,7 +18,8 @@ import {OrderRestAPI} from '../rest_api/order.restapi';
     MatCardModule,
     MatButtonModule,
     CartItemComponent,
-    RouterLink
+    RouterLink,
+    MatIconModule
   ]
 })
 export class Cart {
