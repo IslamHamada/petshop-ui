@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
-import {CartItem} from '../models/CartItem';
-import {CartRestAPI} from '../rest_api/cart.restapi';
-import {SessionCart} from '../models/SessionCart';
+import {CartItem} from '../../models/CartItem';
+import {CartRestAPI} from '../rest/cart.restapi';
+import {SessionCart} from '../../models/SessionCart';
 
 @Injectable({
   providedIn: 'root'
