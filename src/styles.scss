@@ -158,8 +158,14 @@ body {
   ));
 }
 
-//:root {
+:root {
 //  mat-card{
 //    background-color: var(--mat-sys-on-primary-container);
 //  }
-//}
+  mat-progress-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
