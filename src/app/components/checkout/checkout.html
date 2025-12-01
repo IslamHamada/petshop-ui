@@ -52,6 +52,9 @@
       <input matInput formControlName="houseNumber" name="house_number" required>
     </mat-form-field><br>
     <button matButton="outlined" (click)="orderClick()" [disabled]="form.invalid">Order</button>
+    <div [style.visibility]="issue_order_loading ? 'visible' : 'hidden'">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
   </form>
 </section>
 }
