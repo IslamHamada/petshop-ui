@@ -28,11 +28,13 @@ export class ProductComponent {
   sessionService = inject(SessionService);
   route = inject(ActivatedRoute)
   id = Number(this.route.snapshot.paramMap.get('id'));
+  loading : boolean = true;
 
   ngOnInit() {
     this.productRestAPI.getProductById(this.id).subscribe(
       product => {
         this.product = product
+        this.loading = false;
       }
     )
   }
