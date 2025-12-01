@@ -1,3 +1,6 @@
+@if (init_loading > 0){
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+} @else {
 <section>
   <mat-card class="profile">
     <mat-card-header>
@@ -76,3 +79,4 @@
     </mat-card-content>
   </mat-card>
 </section>
+}
