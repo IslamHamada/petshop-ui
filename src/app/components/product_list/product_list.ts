@@ -1,18 +1,20 @@
 import {Component, inject} from '@angular/core';
-import {ProductRestAPI} from '../rest_api/product.restapi';
-import {CartRestAPI} from '../rest_api/cart.restapi';
-import {UserService} from '../user.service';
+import {ProductRestAPI} from '../../injectables/rest/product.restapi';
+import {CartRestAPI} from '../../injectables/rest/cart.restapi';
+import {UserService} from '../../user.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
-import {SessionService} from '../session/session.service';
-import {Product} from '../models/Product';
-import {CartItem} from '../models/CartItem';
+import {SessionService} from '../../injectables/session/session.service';
+import {Product} from '../../models/Product';
+import {CartItem} from '../../models/CartItem';
 import {RouterLink} from '@angular/router';
 import {MatChipListboxChange, MatChipsModule} from '@angular/material/chips';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'products-list',
@@ -27,9 +29,12 @@ import {MatInputModule} from '@angular/material/input';
     RouterLink,
     MatChipsModule,
     FormsModule,
+    MatIconModule,
+    MatProgressSpinnerModule
   ]
 })
 export class ProductList {
+  init_loading = 3;
   productRestService = inject(ProductRestAPI);
   cartRestService = inject(CartRestAPI);
   userService = inject(UserService);
@@ -39,15 +44,22 @@ export class ProductList {
 
   ngOnInit() {
     this.productRestService.getUtilities().subscribe(
-      utilities => this.utility_list = utilities
+      utilities => {
+          this.utility_list = utilities;
+          this.init_loading--;
+        }
     )
     this.productRestService.getForAnimals().subscribe(
-      for_animals => this.for_animal_list = for_animals
+      for_animals => {
+        this.for_animal_list = for_animals;
+        this.init_loading--;
+      }
     )
     this.products$.subscribe(products => {
       this.products = products;
       this.computeFilteredProducts();
       this.computeVisibleProducts();
+      this.init_loading--;
     });
   }
 
