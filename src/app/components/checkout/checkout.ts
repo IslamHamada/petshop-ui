@@ -12,6 +12,7 @@ import {CartRestAPI} from '../../injectables/rest/cart.restapi';
 import {CartItem} from '../../models/CartItem';
 import {MatCardModule} from '@angular/material/card';
 import {Router, RouterLink} from '@angular/router';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'checkout',
@@ -25,6 +26,7 @@ import {Router, RouterLink} from '@angular/router';
     FormsModule,
     MatCardModule,
     RouterLink
+    MatProgressSpinnerModule,
   ]
 })
 export class CheckoutComponent{
