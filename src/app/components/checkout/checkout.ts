@@ -61,11 +61,14 @@ export class CheckoutComponent{
 
   router = inject(Router);
 
+  init_loading = 2;
+
   ngOnInit(){
     this.userService.rxOnBackendId$<CartItem[]>(id => this.cartRestAPI.getCartByUserId(id)).subscribe(
       cart => {
         this.cart = cart;
         cart.forEach(item => this.totalPrice += item.product_price * item.cart_item_count);
+        this.init_loading--;
       }
     )
     this.userService.rxOnBackendId$<UserProfile>(id => this.userRestAPI.getUserProfile(id)).subscribe(
@@ -80,6 +83,7 @@ export class CheckoutComponent{
           street: profile.street,
           houseNumber: profile.houseNumber,
         });
+        this.init_loading--;
       }
     );
   }
