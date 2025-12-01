@@ -9,6 +9,7 @@ import {UserService} from '../../user.service';
 import {CartItem} from '../../models/CartItem';
 import {SessionService} from '../../injectables/session/session.service';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'product-component',
@@ -17,6 +18,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MatCardModule,
     MatButtonModule,
     MatChipsModule,
+    MatProgressSpinnerModule,
   ],
   styleUrls: ['./product_component.sass']
 })
