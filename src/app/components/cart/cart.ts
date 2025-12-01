@@ -31,16 +31,20 @@ export class Cart {
   cart$  = this.userService.rxOnBackendId$<CartItem[]>(id => this.cartRestAPI.getCartByUserId(id));
   cart : CartItem[] = [];
   total_price : number = 0;
+  loading = false;
 
   ngOnInit() {
+    this.loading = true;
     if(this.userService.user.loggedIn)
       this.cart$.subscribe(cart => {
         this.cart = cart
         this.cart.forEach(item => this.total_price += item.product_price * item.cart_item_count);
+        this.loading = false;
       });
     else {
       this.cart = this.sessionService.cart_items;
       this.cart.forEach(item => this.total_price += item.product_price * item.cart_item_count);
+      this.loading = false;
     }
   }
 
