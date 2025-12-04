@@ -1,11 +1,21 @@
 section
-  margin: 1rem
-  mat-card
-    margin-top: 1rem
-    button
-      margin-right: 0.5rem
-  button
-    margin-top: 1rem
-  div
+  display: block
+  .cart
+    margin: 1rem
     display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    gap: 1rem
+    mat-card
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      width: 18%
+      mat-card-actions
+        justify-content: center
+        button
+          margin: 0.3rem
+  .last-div
+    display: flex
+    margin: 1rem
     justify-content: space-between

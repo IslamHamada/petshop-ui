@@ -2,7 +2,7 @@
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 } @else {
 <section>
-  @if (userService.user.loggedIn) {
+  <div class="cart">
     @for(cartItem of cart; track $index) {
       <mat-card>
         <cart-item [cart_item]="cartItem"></cart-item>
@@ -22,34 +22,14 @@
         </mat-card-actions>
       </mat-card>
     }
-    <div>
-      <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1">Proceed to checkout</button>
-      <h4>total price: €{{this.total_price}}</h4>
-    </div>
-  } @else {
-    @for (cartItem of this.sessionService.cart_items; track $index){
-      <mat-card>
-        <cart-item [cart_item]="cartItem"></cart-item>
-        <mat-card-actions>
-          <button matMiniFab (click)="decreaseClick($index)"
-                  [disabled]="cartItem.cart_item_count === 1">
-            <mat-icon>remove</mat-icon>
-          </button>
-
-          <button matMiniFab (click)="increaseClick($index)">
-            <mat-icon>add</mat-icon>
-          </button>
-
-          <button matMiniFab (click)="removeClick($index)">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    }
-    <div>
+  </div>
+  <div class="last-div">
+    @if(userService.user.loggedIn){
+    <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1">Proceed to checkout</button>
+    } @else {
       <button matButton="outlined" (click)="loginToCheckoutClick()" [disabled]="cart.length < 1">Login to checkout</button>
-      <h4>total price: €{{this.total_price}}</h4>
-    </div>
-  }
+    }
+    <h4>total price: €{{this.total_price}}</h4>
+  </div>
 </section>
 }
