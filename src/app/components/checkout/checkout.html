@@ -2,59 +2,65 @@
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 } @else {
 <section>
-  <div>
-    <mat-card>
-      <mat-card-header>
-        <h3>Cart:</h3>
-      </mat-card-header>
-      <mat-card-content>
-        @for(cartItem of cart; track $index){
-          <a [routerLink]="'/product/' + cartItem.product_id">{{cartItem.product_name}}</a> x <a>{{cartItem.cart_item_count}}</a>
+  <mat-card>
+    <mat-card-header>
+      <h2>Checkout</h2>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <div>
+      <mat-card>
+        <mat-card-header>
+          <h3>Cart:</h3>
+        </mat-card-header>
+        <mat-card-content>
+          @for(cartItem of cart; track $index){
+            <a [routerLink]="'/product/' + cartItem.product_id">{{cartItem.product_name}}</a> x <a>{{cartItem.cart_item_count}}</a>
+            <br>
+          }
           <br>
-        }
-        <br>
-        <b>Total price: </b> <a>€{{this.totalPrice}}</a>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <form [formGroup]="form" [submitting]="issue_order_loading">
-    <mat-form-field appearance="outline">
-      <mat-label>First Name</mat-label>
-      <input matInput formControlName="firstName" name="first_name" required>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Last Name</mat-label>
-      <input matInput formControlName="lastName" name="last_name" required>
-    </mat-form-field><br>
-    <mat-form-field appearance="outline">
-      <mat-label>Phone Number</mat-label>
-      <input matInput formControlName="phoneNumber" name="phone_number" required>
-    </mat-form-field><br>
-    <mat-form-field appearance="outline">
-      <mat-label>Country</mat-label>
-      <input matInput formControlName="country" name="country" required>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>City</mat-label>
-      <input matInput formControlName="city" name="city" required>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Postal Code</mat-label>
-      <input matInput formControlName="postalCode" name="postal_code" required>
-    </mat-form-field><br>
-    <mat-form-field appearance="outline">
-      <mat-label>Street</mat-label>
-      <input matInput formControlName="street" name="street" required>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>House Number</mat-label>
-      <input matInput formControlName="houseNumber" name="house_number" required>
-    </mat-form-field><br>
-    <button matButton="outlined" (click)="orderClick()" [disabled]="form.invalid">Order</button>
-    <div [style.visibility]="issue_order_loading ? 'visible' : 'hidden'">
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          <b>Total price: </b> <a>€{{this.totalPrice}}</a>
+        </mat-card-content>
+      </mat-card>
     </div>
-  </form>
+
+    <form [formGroup]="form" [submitting]="issue_order_loading">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" name="first_name" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" name="last_name" required>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" name="phone_number" required>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" name="country" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" name="city" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Postal Code</mat-label>
+        <input matInput formControlName="postalCode" name="postal_code" required>
+      </mat-form-field><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street" name="street" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>House Number</mat-label>
+        <input matInput formControlName="houseNumber" name="house_number" required>
+      </mat-form-field><br>
+      <button matButton="outlined" (click)="orderClick()" [disabled]="form.invalid">Order</button>
+      <div [style.visibility]="issue_order_loading ? 'visible' : 'hidden'">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </form>
+  </mat-card>
 </section>
 }

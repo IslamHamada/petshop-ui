@@ -15,6 +15,7 @@ import {Router, RouterLink} from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SubmittingDirective} from '../../directives/submitting';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'checkout',
@@ -31,6 +32,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatProgressSpinnerModule,
     SubmittingDirective,
     MatProgressBarModule,
+    MatDividerModule,
   ]
 })
 export class CheckoutComponent{
