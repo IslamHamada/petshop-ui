@@ -14,6 +14,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {SubmittingDirective} from '../../directives/submitting';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'profile',
@@ -28,6 +29,7 @@ import {SubmittingDirective} from '../../directives/submitting';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     SubmittingDirective,
+    MatDividerModule,
   ],
   templateUrl: 'profile.html',
   styleUrl: 'profile.sass',
