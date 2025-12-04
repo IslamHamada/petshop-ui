@@ -1,11 +1,9 @@
-<section>
-    <mat-card-header>
-      <a [routerLink]="['/product', this.cart_item().product_id]">
-        <h2>{{cart_item().product_name}}</h2>
-      </a>
-    </mat-card-header>
-    <img mat-card-lg-image [src]="cart_item().product_image" alt="image">
-    <mat-card-content>
-      <h4>€{{cart_item().product_price}} x {{cart_item().cart_item_count}}</h4>
-    </mat-card-content>
-</section>
+<img mat-card-image [src]="cart_item().product_image" alt="image">
+<mat-card-header>
+  <a [routerLink]="['/product', this.cart_item().product_id]">
+    {{cart_item().product_name}}
+  </a>
+</mat-card-header>
+<mat-card-content>
+  <h4>€{{cart_item().product_price}} x {{cart_item().cart_item_count}}</h4>
+</mat-card-content>
