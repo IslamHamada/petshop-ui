@@ -2,6 +2,7 @@ import {Component, input} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {CartItem} from '../../models/CartItem';
 import {RouterLink} from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'cart-item',
@@ -9,6 +10,7 @@ import {RouterLink} from '@angular/router';
   imports: [
     MatCardModule,
     RouterLink,
+    MatIconModule,
   ],
   styleUrl: 'cart_item.sass'
 })
