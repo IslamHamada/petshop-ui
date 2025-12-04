@@ -2,30 +2,38 @@
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 } @else {
 <section>
-  <div class="cart">
-    @for(cartItem of cart; track $index) {
-      <mat-card>
-        <cart-item [cart_item]="cartItem"></cart-item>
-        <mat-card-actions>
-          <button matMiniFab (click)="decreaseClick($index)"
-                  [disabled]="cartItem.cart_item_count === 1">
-            <mat-icon>remove</mat-icon>
-          </button>
-
-          <button matMiniFab (click)="increaseClick($index)">
-            <mat-icon>add</mat-icon>
-          </button>
-
-          <button matMiniFab (click)="removeClick($index)">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <h2>Cart: </h2><br>
+    </mat-card-header>
+    @if(cart.length === 0) {
+      <a>Cart is still empty!</a>
     }
-  </div>
+    <div class="cart">
+      @for(cartItem of cart; track $index) {
+        <mat-card>
+          <cart-item [cart_item]="cartItem"></cart-item>
+          <mat-card-actions>
+            <button matMiniFab (click)="decreaseClick($index)"
+                    [disabled]="cartItem.cart_item_count === 1">
+              <mat-icon>remove</mat-icon>
+            </button>
+
+            <button matMiniFab (click)="increaseClick($index)">
+              <mat-icon>add</mat-icon>
+            </button>
+
+            <button matMiniFab (click)="removeClick($index)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  </mat-card>
 
   <mat-divider></mat-divider>
-  
+
   <div class="last-div">
     @if(userService.user.loggedIn){
     <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1">Proceed to checkout</button>
