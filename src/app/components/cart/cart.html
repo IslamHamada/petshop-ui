@@ -23,6 +23,9 @@
       </mat-card>
     }
   </div>
+
+  <mat-divider></mat-divider>
+  
   <div class="last-div">
     @if(userService.user.loggedIn){
     <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1">Proceed to checkout</button>

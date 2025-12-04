@@ -9,6 +9,7 @@ import {CartItemComponent} from '../cart_item/cart_item';
 import {Router, RouterLink} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'cart',
@@ -21,6 +22,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     RouterLink,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatDividerModule,
   ]
 })
 export class Cart {
