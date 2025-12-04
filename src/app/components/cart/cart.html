@@ -12,6 +12,7 @@
     <div class="cart">
       @for(cartItem of cart; track $index) {
         <mat-card>
+          <img mat-card-image [src]="cartItem.product_image" alt="image">
           <cart-item [cart_item]="cartItem"></cart-item>
           <mat-card-actions>
             <button matMiniFab (click)="decreaseClick($index)"
