@@ -4,8 +4,9 @@
 <section>
   <mat-card>
     <mat-card-header>
-      <h2>Cart: </h2><br>
+      <h2>Cart </h2><br>
     </mat-card-header>
+    <mat-divider></mat-divider>
     @if(cart.length === 0) {
       <a>Cart is still empty!</a>
     }
@@ -31,17 +32,18 @@
         </mat-card>
       }
     </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="last-div">
+      @if(userService.user.loggedIn){
+        <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1">Proceed to checkout</button>
+      } @else {
+        <button matButton="outlined" (click)="loginToCheckoutClick()" [disabled]="cart.length < 1">Login to checkout</button>
+      }
+      <h4>total price: €{{this.total_price}}</h4>
+    </div>
   </mat-card>
 
-  <mat-divider></mat-divider>
-
-  <div class="last-div">
-    @if(userService.user.loggedIn){
-    <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1">Proceed to checkout</button>
-    } @else {
-      <button matButton="outlined" (click)="loginToCheckoutClick()" [disabled]="cart.length < 1">Login to checkout</button>
-    }
-    <h4>total price: €{{this.total_price}}</h4>
-  </div>
 </section>
 }
