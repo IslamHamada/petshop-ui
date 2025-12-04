@@ -1,4 +1,4 @@
-import {Component, inject, input} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ProductRestAPI} from '../../injectables/rest/product.restapi';
 import {ActivatedRoute} from '@angular/router';
 import {Product} from '../../models/Product';
@@ -10,6 +10,7 @@ import {CartItem} from '../../models/CartItem';
 import {SessionService} from '../../injectables/session/session.service';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'product-component',
@@ -19,6 +20,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatButtonModule,
     MatChipsModule,
     MatProgressSpinnerModule,
+    MatDividerModule,
   ],
   styleUrls: ['./product_component.sass']
 })

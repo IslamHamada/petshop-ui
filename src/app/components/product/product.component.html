@@ -6,23 +6,37 @@
     <mat-card>
       <mat-card-header>
         <h1>{{this.product.name}}</h1>
-
       </mat-card-header>
-      <img mat-card-xl-image [src]="this.product.image" alt="image">
+
+      <mat-divider></mat-divider>
+
       <mat-card-content>
-        <p>{{this.product.description}}</p>
-        <mat-chip-set>
-          <mat-chip>{{this.product.utility}}</mat-chip>
-          <mat-chip>{{this.product.for_animal}}</mat-chip>
-        </mat-chip-set>
-        <h4>€{{this.product.price}}</h4>
+        <img mat-card-xl-image [src]="this.product.image" alt="image">
+
+        <div>
+          <h2>Description:</h2>
+          <p>{{this.product.description}}</p>
+
+          <div class="labels">
+            <h3>Labels:</h3>
+            <mat-chip-set>
+              <mat-chip>{{this.product.utility}}</mat-chip>
+              <mat-chip>{{this.product.for_animal}}</mat-chip>
+            </mat-chip-set>
+          </div>
+
+          <div class="price">
+            <h3>Price: </h3>
+            <a>€{{this.product.price}}</a>
+          </div>
           @if (this.product.quantity <= 0) {
-            <h3>OUT OF STOCK</h3>
+            <h3 class="out_of_stock">OUT OF STOCK</h3>
           } @else {
             <mat-card-actions>
               <button matButton="outlined" (click)="addToCartClick()">Add to Cart</button>
             </mat-card-actions>
           }
+        </div>
       </mat-card-content>
     </mat-card>
 
