@@ -1,18 +1,24 @@
 section
-  div
-    display: grid
+  .filters
+    display: block
     div
+      display: flex
+      justify-content: center
       margin: 0.5rem 0.5rem 0
+      mat-form-field
+        display: inline-block
+        width: 70%
+        input
+          padding: 0
     .chips
       display: block
       div
         display: flex
         align-items: center
         justify-content: center
-        mat-form-field
-          width: 70%
-          input
-            padding: 0
+        a
+          font-size: 1rem
+          margin-right: 1rem
   .products
     margin: 1rem
     display: grid
@@ -21,13 +27,25 @@ section
     mat-card
       width: 100%
       box-sizing: border-box
-      h3
+      a
+        font-size: 1rem
+      .out_of_stock
         color: red
       div
         margin-top: 1rem
         div
           display: flex
           align-items: center
+      .price
+        h3
+          display: inline-block
+          margin-right: 0.5rem
+        a
+          font-size: 1rem
+      .card_tail
+        display: flex
+        justify-content: right
+
   .paginator
     display: flex
     justify-content: center
