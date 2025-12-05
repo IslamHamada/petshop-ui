@@ -51,14 +51,19 @@
                 <mat-chip>{{product.for_animal}}</mat-chip>
               </mat-chip-set>
             </div>
-            <h4>€{{product.price}}</h4>
-            @if (product.quantity <= 0) {
-              <h3>OUT OF STOCK</h3>
-            } @else {
-              <mat-card-actions>
-                <button matButton="outlined" (click)="addToCartClick($index)">Add to Cart</button>
-              </mat-card-actions>
-            }
+            <div class="price">
+              <h3>Price: </h3>
+              <a>€{{product.price}}</a>
+            </div>
+            <div class="card_tail">
+              @if (product.quantity <= 0) {
+                <h3 class="out_of_stock">OUT OF STOCK</h3>
+              } @else {
+                <mat-card-actions>
+                  <button matButton="outlined" (click)="addToCartClick($index)">Add to Cart</button>
+                </mat-card-actions>
+              }
+            </div>
           </mat-card-content>
         </mat-card>
       }
