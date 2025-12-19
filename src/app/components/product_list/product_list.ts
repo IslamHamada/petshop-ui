@@ -65,7 +65,7 @@ export class ProductList {
 
   addToCartClick(idx: number){
     this.userService.user.cartItemCount++;
-    let product = this.products[idx];
+    let product = this.visibleProducts[idx];
     if(this.userService.user.loggedIn){
       this.userService.rxOnBackendId$(z => this.cartRestService.addCartItem(product.id, 1, z)).subscribe();
     } else {
