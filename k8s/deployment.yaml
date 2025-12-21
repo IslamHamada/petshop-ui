@@ -15,12 +15,12 @@ spec:
         - name: frontend-app
           image: IMAGE_URL/frontend:TAG
           imagePullPolicy: Always
-          resources:
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
           ports:
             - containerPort: 80
+          resources:
+            limits:
+              cpu: "50m"
+              memory: "512Gi"
 
 ---
 
