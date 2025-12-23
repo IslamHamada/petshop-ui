@@ -11,6 +11,7 @@ import {SessionService} from '../../injectables/session/session.service';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'product-component',
@@ -31,6 +32,7 @@ export class ProductComponent {
   userService = inject(UserService);
   sessionService = inject(SessionService);
   route = inject(ActivatedRoute)
+  snackBar = inject(MatSnackBar);
   id = Number(this.route.snapshot.paramMap.get('id'));
   loading : boolean = true;
 
@@ -47,7 +49,10 @@ export class ProductComponent {
     if(this.product) {
       this.userService.user.cartItemCount++;
       if (this.userService.user.loggedIn) {
-        this.userService.rxOnBackendId$(z => this.cartRestAPI.addCartItem(this.product?.id ?? -1, 1, z)).subscribe();
+        this.userService.rxOnBackendId$(z => {
+          this.snackBar.open(this.product?.name + " is added to the cart")._dismissAfter(2000);
+          return this.cartRestAPI.addCartItem(this.product?.id ?? -1, 1, z);
+        }).subscribe();
       } else {
         let cartItem: CartItem = {
           cart_item_id: -1,
@@ -58,6 +63,7 @@ export class ProductComponent {
           product_image: this.product.image,
         }
         this.sessionService.addCartItem(cartItem);
+        this.snackBar.open(this.product.name + " is added to the cart")._dismissAfter(2000);
       }
     }
   }
