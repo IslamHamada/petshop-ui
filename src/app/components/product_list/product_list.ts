@@ -15,6 +15,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'products-list',
@@ -39,6 +40,7 @@ export class ProductList {
   cartRestService = inject(CartRestAPI);
   userService = inject(UserService);
   sessionService = inject(SessionService);
+  snackBar = inject(MatSnackBar);
   products$ = this.productRestService.getAllProducts();
   products : Product[] = [];
 
@@ -79,6 +81,7 @@ export class ProductList {
       }
       this.sessionService.addCartItem(cartItem)
     }
+    this.snackBar.open(product.name + " is getting added to the cart.");
   }
 
   filtered_products : Product[] = [];
