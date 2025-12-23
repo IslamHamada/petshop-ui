@@ -69,7 +69,10 @@ export class ProductList {
     this.userService.user.cartItemCount++;
     let product = this.visibleProducts[idx];
     if(this.userService.user.loggedIn){
-      this.userService.rxOnBackendId$(z => this.cartRestService.addCartItem(product.id, 1, z)).subscribe();
+      this.userService.rxOnBackendId$(z => {
+        this.snackBar.open(product.name + " is added to the cart")._dismissAfter(2000);
+        return this.cartRestService.addCartItem(product.id, 1, z);
+      }).subscribe();
     } else {
       let cartItem : CartItem = {
         cart_item_id: -1,
@@ -80,8 +83,8 @@ export class ProductList {
         product_image: product.image,
       }
       this.sessionService.addCartItem(cartItem)
+      this.snackBar.open(product.name + " is added to the cart")._dismissAfter(2000);
     }
-    this.snackBar.open(product.name + " is getting added to the cart.");
   }
 
   filtered_products : Product[] = [];
