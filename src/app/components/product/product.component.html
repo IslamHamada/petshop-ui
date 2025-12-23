@@ -29,13 +29,15 @@
             <h3>Price: </h3>
             <a>€{{this.product.price}}</a>
           </div>
-          @if (this.product.quantity <= 0) {
-            <h3 class="out_of_stock">OUT OF STOCK</h3>
-          } @else {
-            <mat-card-actions>
-              <button matButton="outlined" (click)="addToCartClick()">Add to Cart</button>
-            </mat-card-actions>
-          }
+          <div class="last-div">
+            @if (this.product.quantity <= 0) {
+              <h3 class="out_of_stock">OUT OF STOCK</h3>
+            } @else {
+              <mat-card-actions>
+                <button matButton="outlined" (click)="addToCartClick()">Add to Cart</button>
+              </mat-card-actions>
+            }
+          </div>
         </div>
       </mat-card-content>
     </mat-card>
