@@ -57,7 +57,7 @@ export class ProductComponent {
           product_name: this.product.name,
           product_image: this.product.image,
         }
-        this.sessionService.addCartItem(cartItem)
+        this.sessionService.addCartItem(cartItem);
       }
     }
   }
