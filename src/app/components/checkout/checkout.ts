@@ -16,6 +16,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SubmittingDirective} from '../../directives/submitting';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'checkout',
@@ -40,6 +41,7 @@ export class CheckoutComponent{
   orderRestAPI = inject(OrderRestAPI);
   userRestAPI = inject(UserRestAPI);
   cartRestAPI = inject(CartRestAPI);
+  snackBar = inject(MatSnackBar);
   cart: CartItem[] = [];
   totalPrice: number = 0;
   fb = inject(FormBuilder);
@@ -107,6 +109,7 @@ export class CheckoutComponent{
     this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id, this.userProfile)).subscribe(
       order => {
         this.issue_order_loading = false;
+        this.snackBar.open("A new order has been successfully issued!")._dismissAfter(2000);
         this.userService.user.cartItemCount = 0
         this.router.navigate([`/`])
       }
