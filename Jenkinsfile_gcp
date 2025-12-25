@@ -12,6 +12,7 @@ node {
       sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
       sh("gcloud auth configure-docker ${REGISTRY_URL}")
       nodejs(nodeJSInstallationName: 'NodeJS') {
+        sh("npm cache clean --force")
         sh("npm install")
         sh("npx ng build --configuration production")
       }
