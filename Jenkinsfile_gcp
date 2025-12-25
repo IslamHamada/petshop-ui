@@ -13,7 +13,7 @@ node {
       sh("gcloud auth configure-docker ${REGISTRY_URL}")
       nodejs(nodeJSInstallationName: 'NodeJS') {
         sh("npm cache clean --force")
-        sh("npm install")
+        sh("npm ci")
         sh("npx ng build --configuration production")
       }
       sh("rm -rf node_modules")
