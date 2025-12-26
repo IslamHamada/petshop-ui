@@ -4,6 +4,7 @@ import {ProfileComponent} from './components/profile/profile';
 import {ProductList} from './components/product_list/product_list';
 import {ProductComponent} from './components/product/product.component';
 import {CheckoutComponent} from './components/checkout/checkout';
+import {ErrorComponent} from './components/error/error.component';
 
 export const routes: Routes = [
   {
@@ -30,5 +31,10 @@ export const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     title: 'Profile',
+  },
+  {
+    path: 'error',
+    component: ErrorComponent,
+    title: 'Error',
   }
 ];
