@@ -66,8 +66,12 @@
           </mat-expansion-panel-header>
           <b>Items:</b><br>
           @for(orderItem of order.elaborateOrderItems; track $index){
-            <a [routerLink]="['/product', orderItem.product_id]">{{orderItem.product_name}}</a>  x {{orderItem.count}}
-            <br>
+              <div class="product">
+                <a [routerLink]="['/product', orderItem.product_id]">{{orderItem.product_name}}</a>
+                <p>x {{orderItem.count}}</p>
+                    <button matButton (click)="openReviewDialog(orderItem.product_id, orderItem.product_name, userService.user.backend_id)">Review the Product</button>
+                <br>
+              </div>
           }
           <br>
           <div>

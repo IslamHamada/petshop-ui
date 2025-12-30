@@ -15,6 +15,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {SubmittingDirective} from '../../directives/submitting';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {ReviewDialogComponent} from "../review_dialog/review_dialog.component";
 
 @Component({
   selector: 'profile',
@@ -76,5 +78,18 @@ export class ProfileComponent {
     this.update_profile_loading = true;
     this.userService.rxOnBackendId$(id => this.userRestAPI.saveUserProfile(id, this.userProfile))
       .subscribe(()=> this.update_profile_loading = false);
+  }
+
+  dialog = inject(MatDialog);
+  protected openReviewDialog(product_id : number, product_name : string, user_id : number) {
+    this.dialog.open(ReviewDialogComponent, {
+      height: '360px',
+      width: '1280px',
+      data: {
+        product_id: product_id,
+        product_name: product_name,
+        user_id : user_id,
+      }
+    })
   }
 }
