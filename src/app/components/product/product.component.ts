@@ -17,6 +17,8 @@ import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
 import {ReviewComponent} from "../review/review.component";
 import {MatIcon} from "@angular/material/icon";
 import {forkJoin, Observable, switchMap} from "rxjs";
+import {UserRestAPI} from "../../injectables/rest/user.restapi";
+import {UserProfile} from "../../models/UserProfile";
 
 @Component({
   selector: 'product-component',
@@ -37,6 +39,7 @@ export class ProductComponent {
   productRestAPI = inject(ProductRestAPI);
   cartRestAPI = inject(CartRestAPI);
   reviewRestAPI = inject(ReviewRestAPI);
+  userRestAPI = inject(UserRestAPI);
   userService = inject(UserService);
   sessionService = inject(SessionService);
   route = inject(ActivatedRoute)
