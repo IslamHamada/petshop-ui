@@ -58,6 +58,7 @@ export class ProductComponent {
     this.reviewRestAPI.getReviewsByProductId(this.id).pipe(
         switchMap(reviews => {
           this.reviews = reviews;
+          this.reviewsUnfoldClick();
           let restCalls : Observable<UserProfile>[] = [];
           for(let i = 0; i < reviews.length; i++){
             restCalls.push(this.userRestAPI.getUserProfile(reviews[i].userId));
@@ -96,4 +97,18 @@ export class ProductComponent {
   }
 
   reviews : Review[] = [];
+  shownReviewsCount = 0;
+  reviewsPerFold = 5;
+  unfoldEnabled : boolean = false;
+
+  reviewsUnfoldClick() {
+    let hiddenCount = this.reviews.length - this.shownReviewsCount;
+    if(hiddenCount <= this.reviewsPerFold) {
+      this.shownReviewsCount += this.reviewsPerFold;
+      this.unfoldEnabled = false;
+    } else {
+      this.unfoldEnabled = true;
+    }
+    this.shownReviewsCount += this.reviewsPerFold;
+  }
 }
