@@ -1,0 +1,24 @@
+<section>
+    <h3>Review</h3>
+    <mat-divider/>
+    <div class="rating">
+        @for(star of stars; track $index){
+            <button mat-icon-button (click)="chooseRating($index)">
+                @if(rating > $index) {
+                    <mat-icon class="full">star_rate</mat-icon>
+                } @else {
+                    <mat-icon class="empty">star_rate</mat-icon>
+                }
+            </button>
+        }
+    </div>
+    <div class="text">
+        <mat-form-field>
+            <mat-label>
+                leave a review ...
+            </mat-label>
+            <textarea matInput [(ngModel)]="review_text">Hello</textarea>
+        </mat-form-field>
+    </div>
+    <button matButton="filled" [disabled]="rating === 0" (click)="submitReview()">Submit Review</button>
+</section>
