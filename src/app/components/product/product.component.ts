@@ -12,6 +12,11 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Review} from "../../models/Review";
+import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
+import {ReviewComponent} from "../review/review.component";
+import {MatIcon} from "@angular/material/icon";
+import {forkJoin, Observable, switchMap} from "rxjs";
 
 @Component({
   selector: 'product-component',
@@ -22,6 +27,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     MatChipsModule,
     MatProgressSpinnerModule,
     MatDividerModule,
+    ReviewComponent,
+    MatIcon,
   ],
   styleUrls: ['./product_component.sass']
 })
@@ -29,6 +36,7 @@ export class ProductComponent {
   product : Product | undefined;
   productRestAPI = inject(ProductRestAPI);
   cartRestAPI = inject(CartRestAPI);
+  reviewRestAPI = inject(ReviewRestAPI);
   userService = inject(UserService);
   sessionService = inject(SessionService);
   route = inject(ActivatedRoute)
@@ -43,6 +51,20 @@ export class ProductComponent {
         this.loading = false;
       }
     )
+
+    this.reviewRestAPI.getReviewsByProductId(this.id).pipe(
+        switchMap(reviews => {
+          this.reviews = reviews;
+          let restCalls : Observable<UserProfile>[] = [];
+          for(let i = 0; i < reviews.length; i++){
+            restCalls.push(this.userRestAPI.getUserProfile(reviews[i].userId));
+          }
+          return forkJoin(restCalls);
+        })
+      ).subscribe(profiles => {
+        for(let i = 0; i < profiles.length; i++){
+          this.reviews[i].username = profiles[i].username;
+        }
   }
 
   protected addToCartClick() {
@@ -67,4 +89,6 @@ export class ProductComponent {
       }
     }
   }
+
+  reviews : Review[] = [];
 }

@@ -42,7 +42,17 @@
       </mat-card-content>
     </mat-card>
 
-    Reviews
+    <mat-card class="reviews">
+        <h2>Reviews ({{reviews.length}})</h2>
+        <mat-divider/>
+        <div>
+            @for(review of reviews; track $index){
+                @if($index < shownReviewsCount){
+                    <review [rating]="review.rating" [text]="review.text" [username]="review.username"></review>
+                }
+            }
+        </div>
+    </mat-card>
   }
 </section>
 }
