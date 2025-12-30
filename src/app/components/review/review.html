@@ -1,0 +1,11 @@
+<section>
+    <mat-card>
+        <h3>{{username()}}</h3>
+        <div class="stars">
+            @for(i of [].constructor(rating()); track $index){
+                <mat-icon>star_rate</mat-icon>
+            }
+        </div>
+        <p>{{text()}}</p>
+    </mat-card>
+</section>
