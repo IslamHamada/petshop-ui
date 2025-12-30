@@ -42,13 +42,13 @@ export class ProductComponent {
   route = inject(ActivatedRoute)
   snackBar = inject(MatSnackBar);
   id = Number(this.route.snapshot.paramMap.get('id'));
-  loading : boolean = true;
+  loading : number = 2;
 
   ngOnInit() {
     this.productRestAPI.getProductById(this.id).subscribe(
       product => {
         this.product = product
-        this.loading = false;
+        this.loading--;
       }
     )
 
@@ -65,6 +65,8 @@ export class ProductComponent {
         for(let i = 0; i < profiles.length; i++){
           this.reviews[i].username = profiles[i].username;
         }
+        this.loading--;
+    })
   }
 
   protected addToCartClick() {
