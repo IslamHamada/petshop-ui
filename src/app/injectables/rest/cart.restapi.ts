@@ -19,15 +19,15 @@ export class CartRestAPI {
   }
 
   getCartByUserId(user_id : number) {
-    return this.http.get<CartItem[]>(`${environment.gateway_url}/cart/${user_id}`);
+    return this.http.get<CartItem[]>(`${environment.gateway_url}/cart/user/${user_id}`);
   }
 
   updateCartItemCount(cart_item_id : number, count : number) {
-    return this.http.put(`${environment.gateway_url}/cart/${cart_item_id}`,{count: count});
+    return this.http.put(`${environment.gateway_url}/cart/user/item_count/${cart_item_id}`,{count: count});
   }
 
   removeCartItem(cart_item_id: number) {
-    return this.http.delete(`${environment.gateway_url}/cart/delete/${cart_item_id}`);
+    return this.http.delete(`${environment.gateway_url}/cart/cart_item/${cart_item_id}`);
   }
 
   getCartItemCount(user_id: number) {
