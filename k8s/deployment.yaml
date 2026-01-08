@@ -43,12 +43,16 @@ kind: Ingress
 metadata:
   name: frontend-ingress
   annotations:
-    kubernetes.io/ingress.class: gce
-    networking.gke.io/managed-certificates: frontend-cert-new
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     version: "TAG"
 spec:
+  tls:
+    - hosts:
+        - frontend.94.130.54.145.sslip.io
+      secretName: frontend-tls-secret
   rules:
-    - host: 34.54.201.1.sslip.io
+    - host: frontend.94.130.54.145.sslip.io
       http:
         paths:
           - path: /
