@@ -3,7 +3,7 @@ node {
   def version = sh(script: "date +%s", returnStdout: true).trim()
   stage('Checkout'){
     checkout([$class: "GitSCM",
-      branches: [[name: '*/main']],
+      branches: [[name: '*/hetzner']],
       userRemoteConfigs: [[credentialsId: 'git',
       url: 'https://github.com/IslamHamada/petshop-ui.git']]])
   }
