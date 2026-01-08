@@ -1,10 +1,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: gateway-cert
+  name: frontend-cert
   namespace: default
 spec:
-  secretName: gateway-tls-secret
+  secretName: frontend-tls-secret
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
