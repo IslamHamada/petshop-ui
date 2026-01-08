@@ -15,7 +15,7 @@ node {
     }
     sh("rm -rf node_modules")
 
-    docker.withRegistry('', 'dockerhub') {
+    docker.withRegistry('registry-1.docker.io', 'dockerhub') {
       // Build the image (Dockerfile must be in root)
       def appImage = docker.build("${repourl}:frontend-${version}")
       appImage.push()
