@@ -1,4 +1,4 @@
 export const environment = {
-  gateway_url: 'https://34.54.212.8.sslip.io',
-  frontend_url: 'https://34.54.201.1.sslip.io'
+  gateway_url: 'http://gateway.94.130.54.145.sslip.io',
+  frontend_url: 'http://frontend.94.130.54.145.sslip.io',
 }
