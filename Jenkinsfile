@@ -14,11 +14,10 @@ node {
         sh("npx ng build --configuration production")
     }
     sh("rm -rf node_modules")
-    def dockerTask = docker.build("${repourl}:frontend-${version}")
-    dockerTask.push()
+    
     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
       // Build the image (Dockerfile must be in root)
-      def appImage = docker.build(imageTag)
+      def appImage = docker.build("${repourl}:frontend-${version}")
       appImage.push()
     }
   }
