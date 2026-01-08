@@ -29,4 +29,5 @@ node {
         sh "kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f k8s/deployment.yaml"
         sh "kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f k8s/cert.yaml || true"
     }
+  }
 }
