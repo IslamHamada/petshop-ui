@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: frontend-app
-          image: IMAGE_URL/frontend:TAG
+          image: IMAGE_URL:TAG
           imagePullPolicy: Always
           ports:
             - containerPort: 80
