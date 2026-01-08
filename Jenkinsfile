@@ -14,8 +14,8 @@ node {
         sh("npx ng build --configuration production")
     }
     sh("rm -rf node_modules")
-    
-    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+
+    docker.withRegistry('', 'dockerhub') {
       // Build the image (Dockerfile must be in root)
       def appImage = docker.build("${repourl}:frontend-${version}")
       appImage.push()
