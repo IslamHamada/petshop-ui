@@ -31,7 +31,7 @@ export class CartRestAPI {
   }
 
   getCartItemCount(user_id: number) {
-    return this.http.get<number>(`${environment.gateway_url}/cart/item_count/${user_id}`);
+    return this.http.get<number>(`${environment.gateway_url}/cart/user/item_count/${user_id}`);
   }
 
   registerSessionCart(user_id: number,  cart : SessionCart) {
