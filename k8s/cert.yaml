@@ -1,7 +1,13 @@
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
+apiVersion: cert-manager.io/v1
+kind: Certificate
 metadata:
-  name: frontend-cert-new
+  name: gateway-cert
+  namespace: default
 spec:
-  domains:
-    - 34.54.201.1.sslip.io
+  secretName: gateway-tls-secret
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: frontend.94.130.54.145.sslip.io
+  dnsNames:
+    - frontend.94.130.54.145.sslip.io
