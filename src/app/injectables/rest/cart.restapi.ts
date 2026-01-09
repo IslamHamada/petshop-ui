@@ -23,7 +23,7 @@ export class CartRestAPI {
   }
 
   updateCartItemCount(cart_item_id : number, count : number) {
-    return this.http.put(`${environment.gateway_url}/cart/user/item_count/${cart_item_id}`,{count: count});
+    return this.http.put(`${environment.gateway_url}/cart/item_count/${cart_item_id}`,{count: count});
   }
 
   removeCartItem(cart_item_id: number) {
