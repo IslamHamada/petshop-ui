@@ -55,8 +55,6 @@ export class Cart {
     cartItem.cart_item_count++;
     this.userService.user.cartItemCount++;
     if(this.userService.user.loggedIn) {
-      console.log(cartItem.cart_item_id)
-      console.log(cartItem.cart_item_count)
       this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
     } else {
       this.sessionService.copyCartToSession();
@@ -69,8 +67,6 @@ export class Cart {
     cartItem.cart_item_count--;
     this.userService.user.cartItemCount--;
     if(this.userService.user.loggedIn) {
-      console.log(cartItem.cart_item_id)
-      console.log(cartItem.cart_item_count)
       this.cartRestAPI.updateCartItemCount(cartItem.cart_item_id, cartItem.cart_item_count).subscribe()
     } else {
       this.sessionService.copyCartToSession();
