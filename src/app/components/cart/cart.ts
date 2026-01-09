@@ -40,6 +40,7 @@ export class Cart {
     if(this.userService.user.loggedIn)
       this.cart$.subscribe(cart => {
         this.cart = cart
+        console.log(cart);
         this.cart.forEach(item => this.total_price += item.product_price * item.cart_item_count);
         this.loading = false;
       });
