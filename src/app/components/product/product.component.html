@@ -42,24 +42,24 @@
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="reviews">
-        <h2>Reviews ({{reviews.length}})</h2>
-        <mat-divider/>
-        <div>
-            @for(review of reviews; track $index){
-                @if($index < shownReviewsCount){
-                    <review [rating]="review.rating" [text]="review.text" [username]="review.username"></review>
-                }
-            }
-        </div>
-        <div class="unfold">
-            @if(unfoldEnabled) {
-                <button (click)="reviewsUnfoldClick()" matMiniFab>
-                    <mat-icon>arrow_drop_down</mat-icon>
-                </button>
-            }
-        </div>
-    </mat-card>
+<!--    <mat-card class="reviews">-->
+<!--        <h2>Reviews ({{reviews.length}})</h2>-->
+<!--        <mat-divider/>-->
+<!--        <div>-->
+<!--            @for(review of reviews; track $index){-->
+<!--                @if($index < shownReviewsCount){-->
+<!--                    <review [rating]="review.rating" [text]="review.text" [username]="review.username"></review>-->
+<!--                }-->
+<!--            }-->
+<!--        </div>-->
+<!--        <div class="unfold">-->
+<!--            @if(unfoldEnabled) {-->
+<!--                <button (click)="reviewsUnfoldClick()" matMiniFab>-->
+<!--                    <mat-icon>arrow_drop_down</mat-icon>-->
+<!--                </button>-->
+<!--            }-->
+<!--        </div>-->
+<!--    </mat-card>-->
   }
 </section>
 }

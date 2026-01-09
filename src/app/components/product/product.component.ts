@@ -55,22 +55,22 @@ export class ProductComponent {
       }
     )
 
-    this.reviewRestAPI.getReviewsByProductId(this.id).pipe(
-        switchMap(reviews => {
-          this.reviews = reviews;
-          this.reviewsUnfoldClick();
-          let restCalls : Observable<UserProfile>[] = [];
-          for(let i = 0; i < reviews.length; i++){
-            restCalls.push(this.userRestAPI.getUserProfile(reviews[i].userId));
-          }
-          return forkJoin(restCalls);
-        })
-      ).subscribe(profiles => {
-        for(let i = 0; i < profiles.length; i++){
-          this.reviews[i].username = profiles[i].username;
-        }
-        this.loading--;
-    })
+//     this.reviewRestAPI.getReviewsByProductId(this.id).pipe(
+//         switchMap(reviews => {
+//           this.reviews = reviews;
+//           this.reviewsUnfoldClick();
+//           let restCalls : Observable<UserProfile>[] = [];
+//           for(let i = 0; i < reviews.length; i++){
+//             restCalls.push(this.userRestAPI.getUserProfile(reviews[i].userId));
+//           }
+//           return forkJoin(restCalls);
+//         })
+//       ).subscribe(profiles => {
+//         for(let i = 0; i < profiles.length; i++){
+//           this.reviews[i].username = profiles[i].username;
+//         }
+//         this.loading--;
+//     })
   }
 
   protected addToCartClick() {
