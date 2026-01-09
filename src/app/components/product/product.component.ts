@@ -45,7 +45,7 @@ export class ProductComponent {
   route = inject(ActivatedRoute)
   snackBar = inject(MatSnackBar);
   id = Number(this.route.snapshot.paramMap.get('id'));
-  loading : number = 2;
+  loading : number = 1;
 
   ngOnInit() {
     this.productRestAPI.getProductById(this.id).subscribe(
