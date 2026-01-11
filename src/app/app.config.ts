@@ -35,15 +35,9 @@ export const appConfig: ApplicationConfig = {
           `${environment.gateway_url}/order`,
           `${environment.gateway_url}/order/*`,
 
-
           // user service
-          {
-            uriMatcher: (uri) => {
-              let c1 = uri.startsWith('/user');
-              let c2 = !uri.includes("/username/");
-              return c1 && c2;
-            }
-          },
+          `${environment.gateway_url}/user/protected`,
+          `${environment.gateway_url}/user/protected/*`,
 
 
           // review service
