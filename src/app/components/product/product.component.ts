@@ -15,10 +15,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Review} from "../../models/Review";
 import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
 import {ReviewComponent} from "../review/review.component";
-import {MatIcon} from "@angular/material/icon";
+import {MatIconModule} from "@angular/material/icon";
 import {forkJoin, Observable, switchMap} from "rxjs";
 import {UserRestAPI} from "../../injectables/rest/user.restapi";
-import {UserProfile} from "../../models/UserProfile";
 import {ReviewSummary} from "../../models/ReviewSummary";
 
 @Component({
@@ -31,7 +30,7 @@ import {ReviewSummary} from "../../models/ReviewSummary";
     MatProgressSpinnerModule,
     MatDividerModule,
     ReviewComponent,
-    MatIcon,
+    MatIconModule,
   ],
   styleUrls: ['./product.component.sass']
 })
@@ -64,15 +63,15 @@ export class ProductComponent {
         switchMap(reviews => {
           this.reviews = reviews;
           this.reviewsUnfoldClick();
-          let restCalls : Observable<UserProfile>[] = [];
+          let restCalls : Observable<string>[] = [];
           for(let i = 0; i < reviews.length; i++){
-            restCalls.push(this.userRestAPI.getUserProfile(reviews[i].userId));
+            restCalls.push(this.userRestAPI.getUsername(reviews[i].userId));
           }
           return forkJoin(restCalls);
         })
-      ).subscribe(profiles => {
-        for(let i = 0; i < profiles.length; i++){
-          this.reviews[i].username = profiles[i].username;
+      ).subscribe(usernames => {
+        for(let i = 0; i < usernames.length; i++){
+          this.reviews[i].username = usernames[i];
           this.reviewSummary.rating += this.reviews[i].rating;
         }
         this.reviewSummary.count = this.reviews.length;
