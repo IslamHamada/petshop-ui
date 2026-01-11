@@ -15,7 +15,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Review} from "../../models/Review";
 import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
 import {ReviewComponent} from "../review/review.component";
-import {MatIcon} from "@angular/material/icon";
+import {MatIconModule} from "@angular/material/icon";
 import {forkJoin, Observable, switchMap} from "rxjs";
 import {UserRestAPI} from "../../injectables/rest/user.restapi";
 import {UserProfile} from "../../models/UserProfile";
@@ -30,7 +30,7 @@ import {UserProfile} from "../../models/UserProfile";
     MatProgressSpinnerModule,
     MatDividerModule,
     ReviewComponent,
-    MatIcon,
+    MatIconModule,
   ],
   styleUrls: ['./product.component.sass']
 })
