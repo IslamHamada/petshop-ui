@@ -39,7 +39,7 @@ export class ReviewDialogComponent {
     }
 
     reviewRestAPI = inject(ReviewRestAPI);
-
+    userService = inject(UserService);
     submittingReview = false;
     snackBar = inject(MatSnackBar);
     protected submitReview() {
