@@ -32,7 +32,7 @@ import {UserProfile} from "../../models/UserProfile";
     ReviewComponent,
     MatIcon,
   ],
-  styleUrls: ['./product_component.sass']
+  styleUrls: ['./product.component.sass']
 })
 export class ProductComponent {
   product : Product | undefined;
