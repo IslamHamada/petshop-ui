@@ -5,9 +5,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule, MatIconButton} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Review} from "../../models/Review";
 import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
+import {UserService} from "../../user.service";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
     selector: "review-dialog",
