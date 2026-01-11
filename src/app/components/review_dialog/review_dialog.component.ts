@@ -20,11 +20,12 @@ import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
         MatIconButton,
         MatIconModule,
         MatButtonModule,
+        MatProgressBarModule,
     ],
     styleUrl: "./review_dialog.sass"
 })
 export class ReviewDialogComponent {
-    // product_name = input.required<string>();
+    private dialogRef = inject(MatDialogRef<ReviewDialogComponent>);
     review_text: string = "";
     rating: number = 0;
     stars = [1, 2 ,3, 4, 5];
@@ -39,7 +40,10 @@ export class ReviewDialogComponent {
 
     reviewRestAPI = inject(ReviewRestAPI);
 
+    submittingReview = false;
+    snackBar = inject(MatSnackBar);
     protected submitReview() {
+        this.submittingReview = true;
         let review : Review = {
             text: this.review_text,
             rating: this.rating,
@@ -47,6 +51,11 @@ export class ReviewDialogComponent {
             productId: this.data.product_id,
             username: ""
         }
-        this.reviewRestAPI.submitReview(review).subscribe()
+        this.userService.rxOnBackendId$(id => this.reviewRestAPI.submitReview(review))
+            .subscribe(rev => {
+                this.submittingReview = false;
+                this.dialogRef.close(true);
+                this.snackBar.open("Review submitted successfully!")._dismissAfter(2000);
+            });
     }
 }

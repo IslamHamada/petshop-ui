@@ -21,4 +21,7 @@
         </mat-form-field>
     </div>
     <button matButton="filled" [disabled]="rating === 0" (click)="submitReview()">Submit Review</button>
+    <div [style.visibility]="submittingReview ? 'visible' : 'hidden'">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
 </section>
