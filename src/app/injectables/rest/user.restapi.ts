@@ -25,4 +25,8 @@ export class UserRestAPI {
   saveUserProfile(user_id : number, user_profile: UserProfile) {
     return this.http.put<UserProfile>(`${environment.gateway_url}/user/${user_id}`, user_profile)
   }
+
+  getUsername(user_id : number) {
+    return this.http.get<UserProfile>(`${environment.gateway_url}/user/username/${user_id}`);
+  }
 }
