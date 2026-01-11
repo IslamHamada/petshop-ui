@@ -11,7 +11,7 @@ export class UserRestAPI {
   http = inject(HttpClient);
 
   addUserToBackendAndGetId(user: User) {
-    return this.http.post<number>(`${environment.gateway_url}/user`, {
+    return this.http.post<number>(`${environment.gateway_url}/user/protected`, {
       auth0_id: user.auth0_id,
       username: user.username,
       email: user.email,
@@ -19,15 +19,15 @@ export class UserRestAPI {
   }
 
   getUserProfile(user_id : number) {
-    return this.http.get<UserProfile>(`${environment.gateway_url}/user/${user_id}`);
+    return this.http.get<UserProfile>(`${environment.gateway_url}/user/protected/${user_id}`);
   }
 
   saveUserProfile(user_id : number, user_profile: UserProfile) {
-    return this.http.put<UserProfile>(`${environment.gateway_url}/user/${user_id}`, user_profile)
+    return this.http.put<UserProfile>(`${environment.gateway_url}/user/protected/${user_id}`, user_profile)
   }
 
   getUsername(user_id : number) {
-    return this.http.get(`${environment.gateway_url}/user/username/${user_id}`, {
+    return this.http.get(`${environment.gateway_url}/user/public/username/${user_id}`, {
       responseType: 'text'
     });
   }
