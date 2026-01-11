@@ -53,7 +53,7 @@ export class ProductComponent {
         this.product = product;
         this.loading--;
       }
-    )
+    );
 
     this.reviewRestAPI.getReviewsByProductId(this.id).pipe(
         switchMap(reviews => {
@@ -70,7 +70,7 @@ export class ProductComponent {
           this.reviews[i].username = profiles[i].username;
         }
         this.loading--;
-    })
+    });
   }
 
   protected addToCartClick() {
