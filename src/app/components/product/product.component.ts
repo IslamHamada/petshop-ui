@@ -45,7 +45,7 @@ export class ProductComponent {
   route = inject(ActivatedRoute)
   snackBar = inject(MatSnackBar);
   id = Number(this.route.snapshot.paramMap.get('id'));
-  loading : number = 2;
+  loading : number = 1;
   reviewSummary : ReviewSummary = {
     rating: 0,
     count: 0
