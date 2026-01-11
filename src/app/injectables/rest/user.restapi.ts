@@ -27,6 +27,8 @@ export class UserRestAPI {
   }
 
   getUsername(user_id : number) {
-    return this.http.get<UserProfile>(`${environment.gateway_url}/user/username/${user_id}`);
+    return this.http.get(`${environment.gateway_url}/user/username/${user_id}`, {
+      responseType: 'text'
+    });
   }
 }
