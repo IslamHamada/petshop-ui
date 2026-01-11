@@ -1,5 +1,5 @@
 <section>
-    <h3>Review</h3>
+    <h3>Review {{data.product_name}}</h3>
     <mat-divider/>
     <div class="rating">
         @for(star of stars; track $index){
@@ -21,4 +21,7 @@
         </mat-form-field>
     </div>
     <button matButton="filled" [disabled]="rating === 0" (click)="submitReview()">Submit Review</button>
+    <div [style.visibility]="submittingReview ? 'visible' : 'hidden'">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
 </section>

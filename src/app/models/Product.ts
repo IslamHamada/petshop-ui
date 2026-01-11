@@ -1,3 +1,5 @@
+import {ReviewSummary} from "./ReviewSummary";
+
 export interface Product {
   id: number,
   name: string,
@@ -6,5 +8,6 @@ export interface Product {
   image: string,
   description: string,
   for_animal: string,
-  utility: string
+  utility: string,
+  reviewSummary: ReviewSummary,
 }

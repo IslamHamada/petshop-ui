@@ -37,6 +37,9 @@ export const appConfig: ApplicationConfig = {
 
           `${environment.gateway_url}/user`,
           `${environment.gateway_url}/user/*`,
+
+          `${environment.gateway_url}/review`,
+          `${environment.gateway_url}/review/*`,
           ]
       },
     }),

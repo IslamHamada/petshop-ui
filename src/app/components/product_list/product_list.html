@@ -39,9 +39,12 @@
         <mat-card>
           <img mat-card-image [src]="product.image" alt="image">
           <mat-card-header>
-            <a [routerLink]="['/product', product.id]">
-              {{product.name}}
-            </a>
+            <div>
+                <a [routerLink]="['/product', product.id]">
+                  {{product.name}}
+                </a>
+                <p>Rating: {{product.reviewSummary.rating}} / 5 ({{product.reviewSummary.count}})</p>
+            </div>
           </mat-card-header>
           <mat-card-content>
             <div class="labels">

@@ -5,9 +5,12 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule, MatIconButton} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Review} from "../../models/Review";
 import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
+import {UserService} from "../../user.service";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
     selector: "review-dialog",
@@ -20,15 +23,26 @@ import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
         MatIconButton,
         MatIconModule,
         MatButtonModule,
+        MatProgressBarModule,
     ],
     styleUrl: "./review_dialog.sass"
 })
 export class ReviewDialogComponent {
-    // product_name = input.required<string>();
+    private dialogRef = inject(MatDialogRef<ReviewDialogComponent>);
     review_text: string = "";
     rating: number = 0;
     stars = [1, 2 ,3, 4, 5];
     data = inject(MAT_DIALOG_DATA);
+
+    ngOnInit(): void {
+        this.reviewRestAPI.getReviewByProductIdAndUserId(this.data.product_id, this.data.user_id)
+            .subscribe(review => {
+                if(review) {
+                    this.review_text = review.text;
+                    this.rating = review.rating;
+                }
+            });
+    }
     reviewForm = new FormGroup({
         review_text: new FormControl(""),
     })
@@ -38,8 +52,11 @@ export class ReviewDialogComponent {
     }
 
     reviewRestAPI = inject(ReviewRestAPI);
-
+    userService = inject(UserService);
+    submittingReview = false;
+    snackBar = inject(MatSnackBar);
     protected submitReview() {
+        this.submittingReview = true;
         let review : Review = {
             text: this.review_text,
             rating: this.rating,
@@ -47,6 +64,11 @@ export class ReviewDialogComponent {
             productId: this.data.product_id,
             username: ""
         }
-        this.reviewRestAPI.submitReview(review).subscribe()
+        this.userService.rxOnBackendId$(id => this.reviewRestAPI.submitReview(review))
+            .subscribe(rev => {
+                this.submittingReview = false;
+                this.dialogRef.close(true);
+                this.snackBar.open("Review submitted successfully!")._dismissAfter(2000);
+            });
     }
 }

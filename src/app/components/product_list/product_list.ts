@@ -16,6 +16,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {forkJoin, Observable, switchMap, tap} from "rxjs";
+import {ReviewSummary} from "../../models/ReviewSummary";
+import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
 
 @Component({
   selector: 'products-list',
@@ -35,9 +38,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   ]
 })
 export class ProductList {
-  init_loading = 3;
+  init_loading = 4;
   productRestService = inject(ProductRestAPI);
   cartRestService = inject(CartRestAPI);
+  reviewRestService = inject(ReviewRestAPI);
   userService = inject(UserService);
   sessionService = inject(SessionService);
   snackBar = inject(MatSnackBar);
@@ -57,10 +61,24 @@ export class ProductList {
         this.init_loading--;
       }
     )
-    this.products$.subscribe(products => {
-      this.products = products;
-      this.computeFilteredProducts();
-      this.computeVisibleProducts();
+    this.products$.pipe(
+      tap(products => {
+          this.products = products;
+          this.computeFilteredProducts();
+          this.computeVisibleProducts();
+          this.init_loading--;
+        }),
+      switchMap(products => {
+        let summaryRestRequests : Observable<ReviewSummary>[] = [];
+        for(let i = 0; i < products.length; i++){
+          summaryRestRequests[i] = this.reviewRestService.getReviewsSummaryByProductId(products[i].id);
+        }
+        return forkJoin(summaryRestRequests);
+      })
+    ).subscribe(summaries => {
+      for(let i = 0; i < summaries.length; i++){
+        this.products[i].reviewSummary = summaries[i];
+      }
       this.init_loading--;
     });
   }
