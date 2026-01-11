@@ -63,7 +63,7 @@ export class ProductComponent {
         switchMap(reviews => {
           this.reviews = reviews;
           this.reviewsUnfoldClick();
-          let restCalls : Observable<UserProfile>[] = [];
+          let restCalls : Observable<string>[] = [];
           for(let i = 0; i < reviews.length; i++){
             restCalls.push(this.userRestAPI.getUserProfile(reviews[i].userId));
           }
