@@ -24,7 +24,10 @@
               <mat-chip>{{this.product.for_animal}}</mat-chip>
             </mat-chip-set>
           </div>
-
+          <div class="rating">
+            <h3>Rating: </h3>
+            <a>{{reviewSummary.rating}} / 5 ({{reviewSummary.count}})</a>
+          </div>
           <div class="price">
             <h3>Price: </h3>
             <a>€{{this.product.price}}</a>

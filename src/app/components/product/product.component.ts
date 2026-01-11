@@ -46,6 +46,10 @@ export class ProductComponent {
   snackBar = inject(MatSnackBar);
   id = Number(this.route.snapshot.paramMap.get('id'));
   loading : number = 2;
+  reviewSummary : ReviewSummary = {
+    rating: 0,
+    count: 0
+  };
 
   ngOnInit() {
     this.productRestAPI.getProductById(this.id).subscribe(
@@ -68,7 +72,10 @@ export class ProductComponent {
       ).subscribe(profiles => {
         for(let i = 0; i < profiles.length; i++){
           this.reviews[i].username = profiles[i].username;
+          this.reviewSummary.rating += this.reviews[i].rating;
         }
+        this.reviewSummary.count = this.reviews.length;
+        this.reviewSummary.rating = this.reviewSummary.rating / this.reviewSummary.count;
         this.loading--;
     });
   }
