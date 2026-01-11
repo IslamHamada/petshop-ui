@@ -16,4 +16,8 @@ export class ReviewRestAPI {
     submitReview(review: Review) {
         return this.http.post<Review>(`${environment.gateway_url}/review`, review);
     }
+
+    getReviewByProductIdAndUserId(product_id: number, userId: number) {
+        return this.http.get<Review>(`${environment.gateway_url}/review/product/user/${product_id}/${userId}`);
+    }
 }
