@@ -65,13 +65,13 @@ export class ProductComponent {
           this.reviewsUnfoldClick();
           let restCalls : Observable<string>[] = [];
           for(let i = 0; i < reviews.length; i++){
-            restCalls.push(this.userRestAPI.getUserProfile(reviews[i].userId));
+            restCalls.push(this.userRestAPI.getUsername(reviews[i].userId));
           }
           return forkJoin(restCalls);
         })
-      ).subscribe(profiles => {
-        for(let i = 0; i < profiles.length; i++){
-          this.reviews[i].username = profiles[i].username;
+      ).subscribe(usernames => {
+        for(let i = 0; i < usernames.length; i++){
+          this.reviews[i].username = usernames[i];
           this.reviewSummary.rating += this.reviews[i].rating;
         }
         this.reviewSummary.count = this.reviews.length;
