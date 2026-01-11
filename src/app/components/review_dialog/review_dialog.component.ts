@@ -30,6 +30,16 @@ export class ReviewDialogComponent {
     rating: number = 0;
     stars = [1, 2 ,3, 4, 5];
     data = inject(MAT_DIALOG_DATA);
+
+    ngOnInit(): void {
+        this.reviewRestAPI.getReviewByProductIdAndUserId(this.data.product_id, this.data.user_id)
+            .subscribe(review => {
+                if(review) {
+                    this.review_text = review.text;
+                    this.rating = review.rating;
+                }
+            });
+    }
     reviewForm = new FormGroup({
         review_text: new FormControl(""),
     })
