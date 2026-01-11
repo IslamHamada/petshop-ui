@@ -35,11 +35,30 @@ export const appConfig: ApplicationConfig = {
           `${environment.gateway_url}/order`,
           `${environment.gateway_url}/order/*`,
 
-          `${environment.gateway_url}/user`,
-          `${environment.gateway_url}/user/*`,
 
-          `${environment.gateway_url}/review`,
-          `${environment.gateway_url}/review/*`,
+          // user service
+          {
+            uriMatcher: (uri) => {
+              let c1 = uri.startsWith('/user');
+              let c2 = !uri.includes("/username/");
+              return c1 && c2;
+            }
+          },
+
+
+          // review service
+          {
+            uri: `${environment.gateway_url}/review`,
+            httpMethod: 'POST'
+          },
+          {
+            uri: `${environment.gateway_url}/review`,
+            httpMethod: 'PUT'
+          },
+          {
+            uri: `${environment.gateway_url}/review/product/user`,
+            httpMethod: 'GET'
+          }
           ]
       },
     }),
