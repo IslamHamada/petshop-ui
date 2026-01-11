@@ -41,18 +41,8 @@ export const appConfig: ApplicationConfig = {
 
 
           // review service
-          {
-            uri: `${environment.gateway_url}/review`,
-            httpMethod: 'POST'
-          },
-          {
-            uri: `${environment.gateway_url}/review`,
-            httpMethod: 'PUT'
-          },
-          {
-            uri: `${environment.gateway_url}/review/product/user`,
-            httpMethod: 'GET'
-          }
+          `${environment.gateway_url}/review/protected`,
+          `${environment.gateway_url}/review/protected/*`,
           ]
       },
     }),
