@@ -14,6 +14,6 @@ export class ReviewRestAPI {
     }
 
     submitReview(review: Review) {
-        return this.http.post<Review>(`${environment.gateway_url}/review}`, review);
+        return this.http.post<Review>(`${environment.gateway_url}/review`, review);
     }
 }
