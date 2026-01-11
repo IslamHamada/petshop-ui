@@ -19,6 +19,7 @@ import {MatIcon} from "@angular/material/icon";
 import {forkJoin, Observable, switchMap} from "rxjs";
 import {UserRestAPI} from "../../injectables/rest/user.restapi";
 import {UserProfile} from "../../models/UserProfile";
+import {ReviewSummary} from "../../models/ReviewSummary";
 
 @Component({
   selector: 'product-component',
