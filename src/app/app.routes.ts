@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 import {Cart} from './components/cart/cart';
 import {ProfileComponent} from './components/profile/profile';
 import {ProductList} from './components/product_list/product_list';
-import {ProductComponent} from './components/product/product.component';
+import {Product} from './components/product/product';
 import {CheckoutComponent} from './components/checkout/checkout';
-import {ErrorComponent} from './components/error/error.component';
+import {ErrorComponent} from './components/error/error';
 
 export const routes: Routes = [
   {
@@ -24,7 +24,7 @@ export const routes: Routes = [
   },
   {
     path: 'product/:id',
-    component: ProductComponent,
+    component: Product,
     title: 'Product',
   },
   {
