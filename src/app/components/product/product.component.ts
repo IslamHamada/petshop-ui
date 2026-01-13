@@ -14,7 +14,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Review} from "../../models/Review";
 import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
-import {Reviews} from "../reviews/reviews";
+import {ReviewComponent} from "../review/review.component";
 import {MatIconModule} from "@angular/material/icon";
 import {forkJoin, Observable, switchMap} from "rxjs";
 import {UserRestAPI} from "../../injectables/rest/user.restapi";
@@ -22,19 +22,19 @@ import {ReviewSummary} from "../../models/ReviewSummary";
 
 @Component({
   selector: 'product-component',
-  templateUrl: './product.html',
+  templateUrl: './product.component.html',
   imports: [
     MatCardModule,
     MatButtonModule,
     MatChipsModule,
     MatProgressSpinnerModule,
     MatDividerModule,
-    Reviews,
+    ReviewComponent,
     MatIconModule,
   ],
-  styleUrls: ['./product.sass']
+  styleUrls: ['./product.component.sass']
 })
-export class Product {
+export class ProductComponent {
   product : Product = new Product();
   productRestAPI = inject(ProductRestAPI);
   cartRestAPI = inject(CartRestAPI);
