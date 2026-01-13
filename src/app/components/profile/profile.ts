@@ -16,7 +16,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {SubmittingDirective} from '../../directives/submitting';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {ReviewDialogComponent} from "../review_dialog/review_dialog.component";
+import {ReviewDialogComponent} from "../review_dialog/review_dialog";
 
 @Component({
   selector: 'profile',

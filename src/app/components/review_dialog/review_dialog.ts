@@ -14,7 +14,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {SubmittingDirective} from "../../directives/submitting";
 
 @Component({
-    selector: "review-dialog",
+    selector: "reviews-dialog",
     templateUrl: "./review_dialog.html",
     imports: [
         MatFormFieldModule,
