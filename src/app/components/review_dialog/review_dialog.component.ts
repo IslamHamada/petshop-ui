@@ -57,13 +57,12 @@ export class ReviewDialogComponent {
     snackBar = inject(MatSnackBar);
     protected submitReview() {
         this.submittingReview = true;
-        let review : Review = {
-            text: this.review_text,
-            rating: this.rating,
-            userId: this.data.user_id,
-            productId: this.data.product_id,
-            username: ""
-        }
+        let review : Review = new Review();
+        review.text = this.review_text;
+        review.rating = this.rating;
+        review.userId = this.data.user_id;
+        review.productId = this.data.product_id;
+
         this.userService.rxOnBackendId$(id => this.reviewRestAPI.submitReview(review))
             .subscribe(rev => {
                 this.submittingReview = false;

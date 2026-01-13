@@ -44,9 +44,7 @@ export class SessionService {
   }
 
   registerCartInBackendAfterLogin(user_id : number){
-    let sessionCart : SessionCart = {
-      cart_items: []
-    }
+    let sessionCart : SessionCart = new SessionCart();
     this.cart_items.forEach(cart_item => {
       sessionCart.cart_items.push({
         product_id: cart_item.product_id,
