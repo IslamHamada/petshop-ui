@@ -11,6 +11,7 @@ import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
 import {UserService} from "../../user.service";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {SubmittingDirective} from "../../directives/submitting";
 
 @Component({
     selector: "review-dialog",
@@ -24,6 +25,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
         MatIconModule,
         MatButtonModule,
         MatProgressBarModule,
+        SubmittingDirective,
     ],
     styleUrl: "./review_dialog.sass"
 })
