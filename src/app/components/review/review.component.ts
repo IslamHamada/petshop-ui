@@ -3,7 +3,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIcon} from "@angular/material/icon";
 
 @Component({
-    selector: 'reviews',
+    selector: 'review',
     templateUrl: './review.html',
     styleUrl: './review.sass',
     imports: [
@@ -11,7 +11,7 @@ import {MatIcon} from "@angular/material/icon";
         MatIcon,
     ]
 })
-export class Reviews {
+export class ReviewComponent {
     text = input.required<string>();
     rating = input.required<number>();
     username = input.required<string>();
