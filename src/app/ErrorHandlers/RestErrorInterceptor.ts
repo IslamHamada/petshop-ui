@@ -10,11 +10,11 @@ import {Router} from '@angular/router';
 export const RestErrorInterceptor: HttpInterceptorFn = (req, next) => {
   let router = inject(Router);
   return next(req).pipe(
-    catchError((error: HttpErrorResponse) => {
+    catchError((httpError: HttpErrorResponse) => {
       router.navigate(['/error'], {
         queryParams: {
-          error_code: error.status,
-          error_message: error.message
+          error_code: httpError.error.error_code,
+          error_message: httpError.error.error_message
         }
       })
       return EMPTY;
