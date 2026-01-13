@@ -35,7 +35,7 @@ import {ReviewSummary} from "../../models/ReviewSummary";
   styleUrls: ['./product.component.sass']
 })
 export class ProductComponent {
-  product : Product | undefined;
+  product : Product = new Product();
   productRestAPI = inject(ProductRestAPI);
   cartRestAPI = inject(CartRestAPI);
   reviewRestAPI = inject(ReviewRestAPI);
@@ -46,10 +46,7 @@ export class ProductComponent {
   snackBar = inject(MatSnackBar);
   id = Number(this.route.snapshot.paramMap.get('id'));
   loading : number = 1;
-  reviewSummary : ReviewSummary = {
-    rating: 0,
-    count: 0
-  };
+  reviewSummary : ReviewSummary = new ReviewSummary();
 
   ngOnInit() {
     this.productRestAPI.getProductById(this.id).subscribe(

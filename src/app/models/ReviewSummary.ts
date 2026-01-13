@@ -1,4 +1,4 @@
-export interface ReviewSummary {
-    rating: number;
-    count: number;
+export class ReviewSummary {
+    rating: number = 0;
+    count: number = 0;
 }

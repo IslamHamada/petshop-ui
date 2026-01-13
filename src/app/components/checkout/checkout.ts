@@ -45,19 +45,7 @@ export class CheckoutComponent{
   cart: CartItem[] = [];
   totalPrice: number = 0;
   fb = inject(FormBuilder);
-  userProfile: UserProfile = {
-    email: '',
-    username: '',
-    firstName: '',
-    lastName: '',
-    city: '',
-    country: '',
-    houseNumber: '',
-    postalCode: '',
-    street: '',
-    createdAt: '',
-    phoneNumber: ''
-  };
+  userProfile: UserProfile = new UserProfile();
   form = this.fb.nonNullable.group({
     firstName: [''],
     lastName: [''],

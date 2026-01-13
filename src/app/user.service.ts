@@ -20,15 +20,7 @@ import {SessionService} from './injectables/session/session.service';
 export class UserService {
   private backendIdSubject = new BehaviorSubject<number | null>(null)
   backendId$ = this.backendIdSubject.asObservable();
-  user : User = {
-    auth0_id: '',
-    backend_id: -1,
-    username: '',
-    email: '',
-    token: '',
-    cartItemCount: 0,
-    loggedIn: false,
-  };
+  user : User = new User();
   userRestAPI = inject(UserRestAPI)
   cartRestAPI = inject(CartRestAPI)
   sessionService = inject(SessionService);
