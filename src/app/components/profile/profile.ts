@@ -40,19 +40,18 @@ export class ProfileComponent {
   userService = inject(UserService)
   userRestAPI = inject(UserRestAPI)
   orderRestAPI = inject(OrderRestAPI)
-  userProfile: UserProfile = {
-    email: '',
-    username: '',
-    firstName: '',
-    lastName: '',
-    city: '',
-    country: '',
-    houseNumber: '',
-    postalCode: '',
-    street: '',
-    createdAt: '',
-    phoneNumber: ''
-  };
+  fb = inject(FormBuilder);
+  form = this.fb.nonNullable.group({
+    firstName: [''],
+    lastName: [''],
+    phoneNumber: [''],
+    country: [''],
+    city: [''],
+    postalCode: [''],
+    street: [''],
+    houseNumber: ['']
+  })
+  userProfile: UserProfile = new UserProfile();
   updated = false
   orderHistory : Order[] = [];
 
