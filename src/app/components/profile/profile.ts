@@ -78,6 +78,11 @@ export class ProfileComponent {
 
   saveProfileClick(){
     this.update_profile_loading = true;
+    let profile = this.form.value;
+    this.userProfile = {
+      ...this.userProfile,
+      ...profile
+    }
     this.userService.rxOnBackendId$(id => this.userRestAPI.saveUserProfile(id, this.userProfile))
       .subscribe(()=> this.update_profile_loading = false);
   }
