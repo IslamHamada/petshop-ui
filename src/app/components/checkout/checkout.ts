@@ -73,14 +73,7 @@ export class CheckoutComponent{
     this.userService.rxOnBackendId$<UserProfile>(id => this.userRestAPI.getUserProfile(id)).subscribe(
       profile => {
         this.form.patchValue({
-          firstName: profile.firstName,
-          lastName: profile.lastName,
-          phoneNumber: profile.phoneNumber,
-          country: profile.country,
-          city: profile.city,
-          postalCode: profile.postalCode,
-          street: profile.street,
-          houseNumber: profile.houseNumber,
+          ...profile
         });
         this.init_loading--;
       }
