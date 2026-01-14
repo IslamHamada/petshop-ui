@@ -11,13 +11,17 @@ export const RestErrorInterceptor: HttpInterceptorFn = (req, next) => {
   let router = inject(Router);
   return next(req).pipe(
     catchError((httpError: HttpErrorResponse) => {
-      router.navigate(['/error'], {
-        queryParams: {
-          error_code: httpError.error.error_code,
-          error_message: httpError.error.error_message
+        if(httpError.status === 400) {
+            return throwError(() => httpError)
+        } else {
+            router.navigate(['/error'], {
+                queryParams: {
+                    error_code: httpError.error.error_code,
+                    error_message: httpError.error.error_message
+                }
+            })
+            return EMPTY;
         }
-      })
-      return EMPTY;
     })
   );
 };
