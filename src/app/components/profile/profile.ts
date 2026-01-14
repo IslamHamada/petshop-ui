@@ -9,7 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {UserProfile} from '../../models/UserProfile';
 import {UserRestAPI} from '../../injectables/rest/user.restapi';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -33,6 +33,7 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     MatProgressBarModule,
     SubmittingDirective,
     MatDividerModule,
+    ReactiveFormsModule,
   ],
   templateUrl: 'profile.html',
   styleUrl: 'profile.sass',
