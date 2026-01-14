@@ -17,6 +17,7 @@ import {SubmittingDirective} from '../../directives/submitting';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {ReviewDialogComponent} from "../review_dialog/review_dialog.component";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'profile',
@@ -76,6 +77,7 @@ export class ProfileComponent {
     );
   }
 
+  snackBar = inject(MatSnackBar);
   saveProfileClick(){
     this.update_profile_loading = true;
     let profile = this.form.value;
@@ -84,7 +86,17 @@ export class ProfileComponent {
       ...profile
     }
     this.userService.rxOnBackendId$(id => this.userRestAPI.saveUserProfile(id, this.userProfile))
-      .subscribe(()=> this.update_profile_loading = false);
+      .subscribe({
+        next: ()=> {
+          this.update_profile_loading = false;
+          this.snackBar.open("Profile saved successfully.")._dismissAfter(2000);
+        },
+        error: (e) => {
+          this.update_profile_loading = false;
+          let validationErrors : any[] = e.error.errors;
+          console.log('validationErrors', validationErrors);
+          this.form.setErrors({serverError: validationErrors});
+        }});
   }
 
   dialog = inject(MatDialog);
