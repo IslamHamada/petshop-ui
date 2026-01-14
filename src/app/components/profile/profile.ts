@@ -62,6 +62,9 @@ export class ProfileComponent {
     this.userService.rxOnBackendId$<UserProfile>(id => this.userRestAPI.getUserProfile(id)).subscribe(
       userProfile => {
         this.userProfile = userProfile;
+        this.form.patchValue({
+          ...this.userProfile,
+        })
         this.init_loading--;
       }
     );
