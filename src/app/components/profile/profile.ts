@@ -95,7 +95,6 @@ export class ProfileComponent {
         error: (e) => {
           this.update_profile_loading = false;
           let validationErrors : any[] = e.error.errors;
-          console.log('validationErrors', validationErrors);
           this.form.setErrors({serverError: validationErrors});
         }});
   }
