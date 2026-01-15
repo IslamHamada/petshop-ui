@@ -16,7 +16,7 @@
             @if (form.hasError('serverError')){
                 <div class="form_error">
                     @for (error of form.getError('serverError'); track error.id) {
-                        <p style="color: red">{{error.field}} is invalid</p>
+                        <p style="color: red">* {{error.field}} is invalid</p>
                     }
                 </div>
             }
