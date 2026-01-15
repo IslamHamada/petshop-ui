@@ -88,11 +88,17 @@ export class CheckoutComponent{
       ...profile,
     }
     this.userService.rxOnBackendId$<Order>(id => this.orderRestAPI.order(id, this.userProfile)).subscribe(
-      order => {
-        this.issue_order_loading = false;
-        this.snackBar.open("A new order has been successfully issued!")._dismissAfter(2000);
-        this.userService.user.cartItemCount = 0
-        this.router.navigate([`/`])
+      {next: (order) => {
+          this.issue_order_loading = false;
+          this.snackBar.open("A new order has been successfully issued!")._dismissAfter(2000);
+          this.userService.user.cartItemCount = 0
+          this.router.navigate([`/`])
+        },
+        error: (e) => {
+          this.issue_order_loading = false;
+          let validationErrors : any[] = e.error.errors;
+          this.form.setErrors({serverError: validationErrors});
+        }
       }
     )
   }
