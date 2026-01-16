@@ -4,15 +4,31 @@
 <section>
   <div class="filters">
     <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Search</mat-label>
-        <input matInput [(ngModel)]="searchTerm" (input)="search()">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput [(ngModel)]="searchTerm" (input)="search()">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Sort By:</mat-label>
+            <mat-select [(value)]="sortByParam" (selectionChange)="onSort()" ]>
+                <mat-option value="none">none</mat-option>
+                <mat-option value="price">price</mat-option>
+                <mat-option value="popularity">popularity</mat-option>
+                <mat-option value="rating">rating</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Order:</mat-label>
+            <mat-select [(value)]="descending" (selectionChange)="onSort()" ]>
+                <mat-option [value]="true">descending</mat-option>
+                <mat-option [value]="false">ascending</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
     <div class="chips">
       <div>
-        <a>Utility: </a>
+        <a>Utility</a>
         <mat-chip-listbox (change)="onSelectUtility($event)">
           @for(utility of utility_list; track $index) {
             <mat-chip-option>
@@ -22,7 +38,7 @@
         </mat-chip-listbox>
       </div>
       <div>
-        <a>For Animal: </a>
+        <a>For Animal</a>
         <mat-chip-listbox (change)="onSelectForAnimal($event)">
           @for(animal of for_animal_list; track $index) {
             <mat-chip-option>
