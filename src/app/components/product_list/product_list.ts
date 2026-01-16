@@ -19,6 +19,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {forkJoin, Observable, switchMap, tap} from "rxjs";
 import {ReviewSummary} from "../../models/ReviewSummary";
 import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
+import {MatSelectModule} from "@angular/material/select";
 
 @Component({
   selector: 'products-list',
@@ -35,6 +36,7 @@ import {ReviewRestAPI} from "../../injectables/rest/review-restapi.service";
     FormsModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
   ]
 })
 export class ProductList {
@@ -146,6 +148,7 @@ export class ProductList {
         this.utility = event.value;
     this.pageIndex = 0;
     this.computeFilteredProducts();
+    this.computeSortedProducts();
     this.computeVisibleProducts();
   }
 
@@ -156,6 +159,7 @@ export class ProductList {
       this.for_animal = event.value;
     this.pageIndex = 0;
     this.computeFilteredProducts();
+    this.computeSortedProducts();
     this.computeVisibleProducts();
   }
 
@@ -164,6 +168,27 @@ export class ProductList {
   protected search() {
     this.pageIndex = 0;
     this.computeFilteredProducts();
+    this.computeSortedProducts();
+    this.computeVisibleProducts();
+  }
+
+  sortByParam: string = "none";
+  descending: boolean = false;
+
+  protected computeSortedProducts(): void {
+    let flip = this.descending ? -1 : 1;
+    switch (this.sortByParam) {
+      case "none": this.filtered_products.sort((a, b) => flip * (a.id - b.id)); break;
+      case "price": this.filtered_products.sort((a, b) => flip * (a.price - b.price)); break;
+      case "popularity": this.filtered_products.sort((a, b) => flip * (a.reviewSummary.count - b.reviewSummary.count)); break;
+      case "rating": this.filtered_products.sort((a, b) => flip* (a.reviewSummary.rating - b.reviewSummary.rating)); break;
+    }
+  }
+
+  onSort(){
+    this.pageIndex = 0;
+    this.computeFilteredProducts();
+    this.computeSortedProducts();
     this.computeVisibleProducts();
   }
 }
