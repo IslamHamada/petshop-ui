@@ -28,7 +28,7 @@
     </div>
     <div class="chips">
       <div>
-        <a>Utility: </a>
+        <a>Utility</a>
         <mat-chip-listbox (change)="onSelectUtility($event)">
           @for(utility of utility_list; track $index) {
             <mat-chip-option>
@@ -38,7 +38,7 @@
         </mat-chip-listbox>
       </div>
       <div>
-        <a>For Animal: </a>
+        <a>For Animal</a>
         <mat-chip-listbox (change)="onSelectForAnimal($event)">
           @for(animal of for_animal_list; track $index) {
             <mat-chip-option>
