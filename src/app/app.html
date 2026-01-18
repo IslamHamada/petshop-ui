@@ -1,8 +1,6 @@
 <main>
     <mat-toolbar>
-      <button matButton [routerLink]="['/']" class="home">
-        PetShop
-      </button>
+      <button matButton [routerLink]="['/']" class="home">PetShop</button>
       @if (userService.user.loggedIn) {
         <button matButton [routerLink]="['/profile']" class="profile">
           <div>{{userService.user.username}}</div>
