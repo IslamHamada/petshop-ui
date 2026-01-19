@@ -4,12 +4,12 @@
 <section>
   <div class="filters">
     <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" data-cy="search">
             <mat-label>Search</mat-label>
             <input matInput [(ngModel)]="searchTerm" (input)="search()">
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field data-cy="sortBy">
             <mat-label>Sort By:</mat-label>
             <mat-select [(value)]="sortByParam" (selectionChange)="onSort()" ]>
                 <mat-option value="none">none</mat-option>
@@ -18,7 +18,7 @@
                 <mat-option value="rating">rating</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field data-cy="order">
             <mat-label>Order:</mat-label>
             <mat-select [(value)]="descending" (selectionChange)="onSort()" ]>
                 <mat-option [value]="true">descending</mat-option>
@@ -29,7 +29,7 @@
     <div class="chips">
       <div>
         <a>Utility</a>
-        <mat-chip-listbox (change)="onSelectUtility($event)">
+        <mat-chip-listbox (change)="onSelectUtility($event)" data-cy="utility">
           @for(utility of utility_list; track $index) {
             <mat-chip-option>
               {{utility}}
@@ -39,7 +39,7 @@
       </div>
       <div>
         <a>For Animal</a>
-        <mat-chip-listbox (change)="onSelectForAnimal($event)">
+        <mat-chip-listbox (change)="onSelectForAnimal($event)" data-cy="forAnimal">
           @for(animal of for_animal_list; track $index) {
             <mat-chip-option>
               {{animal}}
@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div class="products">
+  <div class="products" data-cy="products">
       @for (product of visibleProducts; track $index) {
         <mat-card>
           <img mat-card-image [src]="product.image" alt="image">
@@ -88,7 +88,7 @@
       }
   </div>
 
-  <div class="paginator">
+  <div class="paginator" data-cy="paginator">
     <mat-paginator [length]="this.filtered_products.length"
                    [pageSize]="pageSize"
                    [pageIndex]="pageIndex"
