@@ -9,7 +9,7 @@
     <mat-divider></mat-divider>
     <mat-card-content>
       <b>Username: </b> <a>{{this.userService.user.username}}</a><br>
-      <b>Email: </b> <a>{{this.userService.user.email}}</a><br>
+      <b>Email: </b> <a data-cy="email">{{userService.user.email}}</a><br>
       <b>Created At: </b> <a>{{this.userProfile.createdAt}}</a><br>
       <div [submitting]="this.update_profile_loading">
         <form [formGroup]="form">
