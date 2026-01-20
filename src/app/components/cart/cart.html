@@ -37,7 +37,7 @@
 
     <div class="last-div">
       @if(userService.user.loggedIn){
-        <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1">Proceed to checkout</button>
+        <button matButton="outlined" [routerLink]="['/checkout']" [disabled]="cart.length < 1" data-cy="checkout_button">Proceed to checkout</button>
       } @else {
         <button matButton="outlined" (click)="loginToCheckoutClick()" [disabled]="cart.length < 1">Login to checkout</button>
       }
