@@ -71,11 +71,11 @@
         <mat-expansion-panel data-cy="order">
           <mat-expansion-panel-header>
             <b>Time</b><a>: {{order.time}}</a>
-            <b style="white-space: pre;"> Price</b><a>: €{{order.price}}</a>
+            <b style="white-space: pre;"> Price</b><a data-cy="orderPrice">: €{{order.price}}</a>
           </mat-expansion-panel-header>
           <b>Items:</b><br>
           @for(orderItem of order.elaborateOrderItems; track $index){
-              <div class="product">
+              <div class="product" data-cy="orderProduct">
                 <a [routerLink]="['/product', orderItem.product_id]">{{orderItem.product_name}}</a>
                 <p>x {{orderItem.count}}</p>
                     <button matButton (click)="openReviewDialog(orderItem.product_id, orderItem.product_name, userService.user.backend_id)">Leave a review</button>
@@ -84,12 +84,12 @@
           }
           <br>
           <div>
-            <b>Name: </b> <a>{{order.firstName}} {{order.lastName}}</a> <br>
-            <b>Phone Number: </b> <a>{{order.phoneNumber}}</a><br><br>
+            <b>Name: </b> <a data-cy="orderProfileName">{{order.firstName}} {{order.lastName}}</a> <br>
+            <b>Phone Number: </b> <a data-cy="orderProfilePhoneNumber">{{order.phoneNumber}}</a><br><br>
             <b>Address: </b><br>
-            {{order.country}} <br>
-            {{order.postalCode}} {{order.city}} <br>
-            {{order.street}} {{order.houseNumber}} <br>
+              <a data-cy="orderProfileAddress1">{{order.street}} {{order.houseNumber}}</a> <br>
+              <a data-cy="orderProfileAddress2">{{order.postalCode}} {{order.city}}</a> <br>
+              <a data-cy="orderProfileCountry">{{order.country}}</a> <br>
           </div>
         </mat-expansion-panel>
       }
