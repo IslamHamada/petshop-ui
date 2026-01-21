@@ -68,7 +68,7 @@
     <mat-divider></mat-divider>
     <mat-card-content>
       @for(order of orderHistory; track $index){
-        <mat-expansion-panel>
+        <mat-expansion-panel data-cy="order">
           <mat-expansion-panel-header>
             <b>Time</b><a>: {{order.time}}</a>
             <b style="white-space: pre;"> Price</b><a>: €{{order.price}}</a>
