@@ -20,7 +20,7 @@
             <mat-label>
                 leave a review ...
             </mat-label>
-            <textarea matInput [(ngModel)]="review_text">Hello</textarea>
+            <textarea matInput [(ngModel)]="review_text" maxlength="255"></textarea>
         </mat-form-field>
     </div>
     <button matButton="filled" [disabled]="rating === 0" (click)="submitReview()">Submit Review</button>
