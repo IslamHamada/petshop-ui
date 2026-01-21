@@ -1,3 +1,6 @@
+@if(loading > 0){
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+} @else {
 <section [submitting]="submittingReview">
     <h3>Review {{data.product_name}}</h3>
     <mat-divider/>
@@ -25,3 +28,4 @@
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
 </section>
+}

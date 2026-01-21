@@ -12,6 +12,7 @@ import {UserService} from "../../user.service";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SubmittingDirective} from "../../directives/submitting";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @Component({
     selector: "review-dialog",
@@ -26,6 +27,7 @@ import {SubmittingDirective} from "../../directives/submitting";
         MatButtonModule,
         MatProgressBarModule,
         SubmittingDirective,
+        MatProgressSpinnerModule,
     ],
     styleUrl: "./review_dialog.sass"
 })
@@ -35,14 +37,16 @@ export class ReviewDialogComponent {
     rating: number = 0;
     stars = [1, 2 ,3, 4, 5];
     data = inject(MAT_DIALOG_DATA);
+    loading = 1;
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.reviewRestAPI.getReviewByProductIdAndUserId(this.data.product_id, this.data.user_id)
             .subscribe(review => {
                 if(review) {
                     this.review_text = review.text;
                     this.rating = review.rating;
                 }
+                this.loading--;
             });
     }
     reviewForm = new FormGroup({
