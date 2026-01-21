@@ -14,7 +14,7 @@
         </mat-card-header>
         <mat-card-content>
           @for(cartItem of cart; track $index){
-            <a [routerLink]="'/product/' + cartItem.product_id">{{cartItem.product_name}}</a> x <a>{{cartItem.cart_item_count}}</a>
+            <a [routerLink]="'/product/' + cartItem.product_id" data-cy="cartItemName">{{cartItem.product_name}}</a> x <a data-cy="cartItemCount">{{cartItem.cart_item_count}}</a>
             <br>
           }
           <br>
