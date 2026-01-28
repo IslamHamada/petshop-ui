@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
-import {provideRouter, withComponentInputBinding} from '@angular/router';
+import {provideRouter, withComponentInputBinding, withViewTransitions} from '@angular/router';
 
 import { routes } from './app.routes';
 import {provideAuth0, authHttpInterceptorFn} from '@auth0/auth0-angular';
@@ -17,7 +17,9 @@ export const appConfig: ApplicationConfig = {
     ])),
     provideRouter(
       routes,
-      withComponentInputBinding()),
+      withComponentInputBinding(),
+      withViewTransitions()
+    ),
     provideAuth0({
       domain: 'dev-atfpp36qj24tzo8l.us.auth0.com',
       clientId: 'UxGoFyQJ1IPiuc2RkPtb4v84jpe3x2jg',
