@@ -43,6 +43,7 @@ export class App {
           this.userService.user.newNotificationsCount = notifications.filter(x => !x.read).length;
         })
   }
+
   protected notificationsClick() {
     this.userService.rxOnBackendId$<Notification[]>(id => this.notificationRestAPI.getUserNotifications(id))
       .pipe(
