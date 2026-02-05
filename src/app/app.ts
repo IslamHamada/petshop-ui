@@ -11,6 +11,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {Notification} from "./models/Notification";
 import {NotificationsRestAPI} from "./injectables/rest/notifications.restapi";
 import {MatDividerModule} from "@angular/material/divider";
+import {switchMap, tap} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -41,5 +42,23 @@ export class App {
           this.notifications = notifications.reverse();
           this.userService.user.newNotificationsCount = notifications.filter(x => !x.read).length;
         })
+  }
+  protected notificationsClick() {
+    this.userService.rxOnBackendId$<Notification[]>(id => this.notificationRestAPI.getUserNotifications(id))
+      .pipe(
+        tap(notifications => {
+          this.notifications = notifications.reverse();
+          this.userService.user.newNotificationsCount = notifications.filter(x => !x.read).length;
+        }),
+        switchMap(() => this.userService.rxOnBackendId$(id => this.notificationRestAPI.readNotifications(id)))
+      ).subscribe(() => {
+        for(let i = 0; i < this.notifications.length; i++) {
+          let notification = this.notifications[i];
+          if(!notification.read){
+            notification.read = true;
+          }
+        }
+        this.userService.user.newNotificationsCount = 0;
+      });
   }
 }
