@@ -8,12 +8,24 @@
         <button matIconButton [matBadge]="this.userService.user.cartItemCount" [routerLink]="['/cart']" class="cart">
           <mat-icon>shopping_cart</mat-icon>
         </button>
+        <button matIconButton [matBadge]="userService.user.newNotificationsCount" [matMenuTriggerFor]="notificationsMenu" class="notifications" (click)="notificationsClick()">
+            <mat-icon>notifications</mat-icon>
+        </button>
+        <mat-menu #notificationsMenu="matMenu" class="menu">
+            @for(notification of notifications; track $index){
+                <div class="notification" [style.color]="!notification.read? 'red' : 'white'">
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item>{{notification.message}}</button>
+                </div>
+            }
+        </mat-menu>
         <button matButton="filled" (click)="userService.authObject.logout({logoutParams: {returnTo: environment.frontend_url}})" class="logout">logout</button>
       } @else {
         <button matButton disabled></button>
         <button matIconButton [matBadge]="this.sessionService.getCount()" [routerLink]="['/cart']" class="cart">
           <mat-icon>shopping_cart</mat-icon>
         </button>
+        <button matButton disabled></button>
         <button matButton="filled" (click)="userService.authObject.loginWithRedirect()" class="login">login</button>
       }
     </mat-toolbar>

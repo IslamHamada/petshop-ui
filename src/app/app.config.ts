@@ -45,6 +45,10 @@ export const appConfig: ApplicationConfig = {
           // review service
           `${environment.gateway_url}/review/protected`,
           `${environment.gateway_url}/review/protected/*`,
+
+          // notifications service
+          `${environment.gateway_url}/notifications/protected`,
+          `${environment.gateway_url}/notifications/protected/*`,
           ]
       },
     }),

@@ -74,6 +74,7 @@ export class ReviewDialogComponent {
                 this.submittingReview = false;
                 this.dialogRef.close(true);
                 this.snackBar.open("Review submitted successfully!")._dismissAfter(2000);
+                this.userService.user.newNotificationsCount++;
             });
     }
 }

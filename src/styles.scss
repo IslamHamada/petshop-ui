@@ -169,3 +169,9 @@ body {
     transform: translate(-50%, -50%);
   }
 }
+
+:root {
+  @include mat.menu-overrides((
+          container-shape: 12px,
+  ));
+}
