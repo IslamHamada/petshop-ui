@@ -92,6 +92,7 @@ export class CheckoutComponent{
           this.issue_order_loading = false;
           this.snackBar.open("A new order has been successfully issued!")._dismissAfter(2000);
           this.userService.user.cartItemCount = 0
+          this.userService.user.newNotificationsCount++;
           this.router.navigate([`/`])
         },
         error: (e) => {
