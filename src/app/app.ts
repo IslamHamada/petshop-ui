@@ -7,13 +7,23 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {SessionService} from './injectables/session/session.service';
 import {environment} from '../environments/environment';
+import {MatMenuModule} from "@angular/material/menu";
 import {Notification} from "./models/Notification";
 import {NotificationsRestAPI} from "./injectables/rest/notifications.restapi";
+import {MatDividerModule} from "@angular/material/divider";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, MatToolbarModule, MatBadgeModule, MatButtonModule,
-  MatIconModule],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    MatToolbarModule,
+    MatBadgeModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatDividerModule,
+  ],
   templateUrl: './app.html',
   styleUrls: ['./app.sass']
 })

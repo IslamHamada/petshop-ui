@@ -3,7 +3,7 @@ mat-toolbar
   top: 0
   z-index: 100
   display: grid
-  grid-template-columns: repeat(4, 1fr)
+  grid-template-columns: repeat(5, 1fr)
   gap: 1rem
   background-color: var(--mat-sys-primary-container)
   .home
@@ -15,4 +15,15 @@ mat-toolbar
   .profile
     justify-self: start
   .cart
+    justify-self: center
+  .notifications
     justify-self: end
+
+.notification
+  margin: 0.5rem
+  mat-divider
+    margin: 0.25rem 1rem
+
+::ng-deep
+  .menu
+      max-height: 20rem
