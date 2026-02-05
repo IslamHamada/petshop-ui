@@ -6,4 +6,5 @@ export class User {
   token: string = "";
   cartItemCount: number = 0;
   loggedIn: boolean = false;
+  newNotificationsCount: number = 0;
 }
