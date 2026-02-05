@@ -7,6 +7,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {SessionService} from './injectables/session/session.service';
 import {environment} from '../environments/environment';
+import {Notification} from "./models/Notification";
+import {NotificationsRestAPI} from "./injectables/rest/notifications.restapi";
 
 @Component({
   selector: 'app-root',
@@ -19,4 +21,15 @@ export class App {
   userService = inject(UserService)
   sessionService = inject(SessionService)
   readonly environment = environment;
+  notificationRestAPI = inject(NotificationsRestAPI)
+
+  notifications: Notification[] = [];
+
+  ngOnInit() {
+    this.userService.rxOnBackendId$<Notification[]>(id => this.notificationRestAPI.getUserNotifications(id))
+        .subscribe(notifications => {
+          this.notifications = notifications.reverse();
+          this.userService.user.newNotificationsCount = notifications.filter(x => !x.read).length;
+        })
+  }
 }
